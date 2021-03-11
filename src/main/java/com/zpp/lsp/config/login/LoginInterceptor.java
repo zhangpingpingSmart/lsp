@@ -63,7 +63,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
             if (user != null) {
                 //请求进来就刷新一次token的有效期
-                redisTemplate.expire(key,RedisKeyConfig.LOGIN_TIME , TimeUnit.MILLISECONDS);
+                redisTemplate.expire(key,RedisKeyConfig.LOGIN_TIME , TimeUnit.SECONDS);
                 return true;
             } else {
                 jo.put("message","登录有效期已过，请重新登陆");
