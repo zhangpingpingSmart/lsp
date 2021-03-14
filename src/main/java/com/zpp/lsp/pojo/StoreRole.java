@@ -11,14 +11,14 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table(name = "zpp_user_role")
-public class UserRole {
+@Table(name = "zpp_store_role")
+public class StoreRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "zur_id")
-    private Long zurId;
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "zsr_id")
+    private Long zsrId;
+    @Column(name = "store_id")
+    private Long storeId;
     @Column(name = "role_id")
     private Long roleId;
 
