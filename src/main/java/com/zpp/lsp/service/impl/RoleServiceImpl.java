@@ -1,7 +1,7 @@
 package com.zpp.lsp.service.impl;
 
-import com.zpp.lsp.dao.RoleDao;
-import com.zpp.lsp.dao.StoreDao;
+import com.zpp.lsp.mapper.RoleMapper;
+import com.zpp.lsp.mapper.StoreMapper;
 import com.zpp.lsp.pojo.Role;
 import com.zpp.lsp.pojo.Store;
 import com.zpp.lsp.service.RoleService;
@@ -17,10 +17,10 @@ import java.util.List;
 @Service
 public class RoleServiceImpl implements RoleService {
     @Autowired
-    private RoleDao roleDao;
+    private RoleMapper roleMapper;
 
     @Autowired
-    private StoreDao storeDao;
+    private StoreMapper storeMapper;
 
     /**
      * 根据商家查角色
@@ -29,7 +29,7 @@ public class RoleServiceImpl implements RoleService {
      */
     @Override
     public List<Role> getRolesByStoreId(String storeId) {
-        return roleDao.getRolesByStoreId(storeId);
+        return roleMapper.getRolesByStoreId(storeId);
     }
     /**
      * 根据角色查询商家
@@ -38,6 +38,6 @@ public class RoleServiceImpl implements RoleService {
      */
     @Override
     public List<Store> getStoresByRoleId(String roleId) {
-        return storeDao.getStoresByRoleId(roleId);
+        return storeMapper.getStoresByRoleId(roleId);
     }
 }

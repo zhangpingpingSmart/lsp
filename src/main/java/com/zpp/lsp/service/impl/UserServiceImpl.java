@@ -1,6 +1,5 @@
 package com.zpp.lsp.service.impl;
 
-import com.zpp.lsp.dao.UserDao;
 import com.zpp.lsp.mapper.UserMapper;
 import com.zpp.lsp.pojo.User;
 import com.zpp.lsp.service.UserService;
