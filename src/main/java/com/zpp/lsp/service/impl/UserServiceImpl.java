@@ -1,6 +1,7 @@
 package com.zpp.lsp.service.impl;
 
 import com.zpp.lsp.dao.UserDao;
+import com.zpp.lsp.mapper.UserMapper;
 import com.zpp.lsp.pojo.User;
 import com.zpp.lsp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,11 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDao userDao;
+    private UserMapper userMapper;
 
     @Override
     public User getUserByUserId(String userId) {
-        return userDao.getUserByUserId(Long.parseLong(userId));
+        return userMapper.selectById(Long.parseLong(userId));
     }
 
     /**
@@ -28,7 +29,8 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User getUserByUserNameAndPassword(User user) {
+
         //校验用户名密码，用户信息写入redis
-        return userDao.getUserByUserNameAndPassword(user.getUserName(),user.getPassword());
+        return userMapper.getUserByUserNameAndPassword(user.getUserName(),user.getPassword());
     }
 }

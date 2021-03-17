@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpp.lsp.mapper.RoleMapper">
+
+    <!-- 查找用户信息 -->
+    <select id="getRolesByStoreId" resultType="com.zpp.lsp.pojo.Role">
+       SELECT
+       zr.role_id roleId,zr.role_name roleName
+       FROM
+       zpp_role zr
+       LEFT JOIN
+       zpp_store_role zsr
+       ON
+       zr.role_id=zsr.role_id
+       WHERE
+       zsr.store_id=#{storeId}
+    </select>
+
+</mapper>
