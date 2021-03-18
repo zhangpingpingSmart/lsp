@@ -5,7 +5,6 @@ import com.zpp.lsp.mapper.RoleMapper;
 import com.zpp.lsp.pojo.Menu;
 import com.zpp.lsp.pojo.Role;
 import com.zpp.lsp.service.MenuService;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +28,21 @@ public class MenuServiceImpl implements MenuService {
         List<Role> roles = roleMapper.getRolesByStoreId(storeId);
         List<Menu> menus = menuMapper.getMenusByRoleId(roles.get(0).getRoleId());
         return buildMenuTree(menus,0L);
+    }
+
+    @Override
+    public void saveMenu(Menu menu) {
+        menuMapper.insert(menu);
+    }
+
+    @Override
+    public void updateMenuById(Menu menu) {
+        menuMapper.updateById(menu);
+    }
+
+    @Override
+    public void deleteMenuById(String menuId) {
+        menuMapper.deleteById(menuId);
     }
 
     /**

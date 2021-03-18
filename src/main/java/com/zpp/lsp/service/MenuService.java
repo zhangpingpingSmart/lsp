@@ -11,4 +11,7 @@ import java.util.List;
 public interface MenuService {
 
     List<Menu> getMenusByStoreId(String storeId);
+    void saveMenu(Menu menu);
+    void updateMenuById(Menu menu);
+    void deleteMenuById(String menuId);
 }

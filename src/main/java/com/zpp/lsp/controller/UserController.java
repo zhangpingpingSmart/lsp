@@ -28,7 +28,7 @@ public class UserController {
     @ApiImplicitParams(value = {
         @ApiImplicitParam(name = "userId",value = "用户id",required = true,paramType = "path",dataType = "String")
     })
-    public Object getUserByUserId(@PathVariable("userId") String userId){
+    public ResultData getUserByUserId(@PathVariable("userId") String userId){
         User user=userService.getUserByUserId(userId);
         return ResultData.success(user);
     }

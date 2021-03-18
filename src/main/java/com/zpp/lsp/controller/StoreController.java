@@ -34,7 +34,7 @@ public class StoreController {
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "storeId",value = "商户id",required = true,paramType = "path",dataType = "String")
     })
-    public Object getUserByUserId(@PathVariable("storeId") String storeId){
+    public ResultData getUserByUserId(@PathVariable("storeId") String storeId){
         Store store=storeService.getUserByUserId(storeId);
         return ResultData.success(store);
     }
