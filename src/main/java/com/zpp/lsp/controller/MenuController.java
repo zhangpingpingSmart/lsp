@@ -28,7 +28,7 @@ public class MenuController {
 
     @Priv(login = true)
     @PostMapping("/storeMenus/{storeId}")
-    @ApiOperation(value = "根据商户id获取菜单信息",httpMethod = "POST")
+    @ApiOperation(value = "根据商户id获取菜单信息")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "storeId",value = "商户id",required = true,paramType = "path",dataType = "String")
     })
@@ -39,20 +39,28 @@ public class MenuController {
 
     @Priv(login = true)
     @PostMapping("/add")
+    @ApiOperation(value = "新增商家")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "menu", value = "菜单表单", required = true, dataType = "Menu")
+    })
     public ResultData addMenu(@RequestBody Menu menu){
         menuService.saveMenu(menu);
         return ResultData.success("新增成功");
     }
 
     @Priv(login = true)
-    @PostMapping("/update")
+    @PutMapping("/update")
+    @ApiOperation(value = "新增商家")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "menu", value = "菜单表单", required = true, dataType = "Menu")
+    })
     public ResultData updateMenuById(@RequestBody Menu menu){
         menuService.updateMenuById(menu);
         return ResultData.success("编辑成功");
     }
     @Priv(login = true)
-    @PostMapping("/del/{menuId}")
-    @ApiOperation(value = "根据id删除菜单",httpMethod = "POST")
+    @DeleteMapping("/del/{menuId}")
+    @ApiOperation(value = "根据id删除菜单")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "menuId",value = "菜单id",required = true,paramType = "path",dataType = "String")
     })

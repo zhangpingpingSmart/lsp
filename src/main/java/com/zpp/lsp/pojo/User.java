@@ -15,7 +15,7 @@ import java.util.Date;
  */
 @Data
 @TableName("zpp_user")
-@ApiModel("用户表单")
+@ApiModel(value = "User",description = "用户表单")
 public class User {
     @ApiModelProperty(value = "用户id",name = "userId",required = true)
     private Long userId;
@@ -53,5 +53,6 @@ public class User {
     @ApiModelProperty(value = "登录次数",name = "loginCount")
     private Long loginCount;
 
+    @ApiModelProperty(hidden = true)
     private String salt;
 }

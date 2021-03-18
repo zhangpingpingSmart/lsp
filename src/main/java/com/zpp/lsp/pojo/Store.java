@@ -15,7 +15,7 @@ import java.util.Date;
  */
 @Data
 @TableName("zpp_store")
-@ApiModel("商家表单")
+@ApiModel(value = "Store",description = "商家表单")
 public class Store {
 
     @ApiModelProperty(value = "商家id",name = "storeId",required = true)
@@ -49,6 +49,7 @@ public class Store {
     @ApiModelProperty(value = "修改时间",name = "updateTime")
     private Date updateTime;
 
+    @ApiModelProperty(hidden = true)
     private String salt;
 
 

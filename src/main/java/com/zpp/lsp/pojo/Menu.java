@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @TableName("zpp_menu")
-@ApiModel("菜单表单")
+@ApiModel(value = "Menu",description = "菜单表单")
 public class Menu {
 
     @ApiModelProperty(value = "菜单id",name = "menuId",required = true)
@@ -43,5 +43,6 @@ public class Menu {
     @ApiModelProperty(value = "备注",name = "remark")
     private String remark;
 
+    @ApiModelProperty(hidden = true)
     private List<Menu> childMenus;
 }

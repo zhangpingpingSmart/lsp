@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @TableName("zpp_role")
-@ApiModel("角色表单")
+@ApiModel(value = "Role",description = "角色表单")
 public class Role {
     @ApiModelProperty(value = "角色id",name = "roleId",required = true)
     private Long roleId;
