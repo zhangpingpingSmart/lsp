@@ -1,5 +1,6 @@
 package com.zpp.lsp.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,6 +12,7 @@ import java.util.Date;
  * @Date: 2021/3/10 11:37
  */
 @Data
+@TableName("zpp_user")
 public class User {
     private Long userId;
 

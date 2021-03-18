@@ -1,5 +1,6 @@
 package com.zpp.lsp.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
  * @Date: 2021/3/17 13:32
  */
 @Data
+@TableName("zpp_store")
 public class Store {
 
     private Long storeId;

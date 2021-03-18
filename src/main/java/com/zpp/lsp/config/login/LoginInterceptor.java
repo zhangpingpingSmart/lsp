@@ -54,7 +54,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             e.printStackTrace();
         }
         JSONObject jo=new JSONObject();
-        jo.put("code",0);
+        jo.put("code",401);
         if (StringUtils.isNotBlank(token)) {
             //获取redis中token的key
             String key = RedisKeyConfig.LOGIN_TOKEN + token;

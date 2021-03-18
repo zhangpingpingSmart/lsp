@@ -40,8 +40,8 @@ public class LoginController {
         user.setPassword(MD5Util.MD5(user.getPassword()));
         User u = userService.getUserByUserNameAndPassword(user);
         if (u!=null){
-            //token生成规则：LOGIN_TOKEN+用户名 +密码+盐（md5加密）
-            String token= MD5Util.MD5(u.getUserName()+u.getPassword()+u.getSalt());
+            //token生成规则：LOGIN_TOKEN+用户名 +密码+盐（md5加密）+时间戳
+            String token= MD5Util.MD5(u.getUserName()+u.getPassword()+u.getSalt()+System.currentTimeMillis());
             redisTemplate.boundValueOps(RedisKeyConfig.LOGIN_TOKEN+token).set(JSONObject.toJSON(u).toString());
             redisTemplate.expire(RedisKeyConfig.LOGIN_TOKEN+token,1800, TimeUnit.SECONDS);
             JSONObject jo =new JSONObject();

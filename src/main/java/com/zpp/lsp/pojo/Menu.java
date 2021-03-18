@@ -1,9 +1,11 @@
 package com.zpp.lsp.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 
 @Data
+@TableName("zpp_menu")
 public class Menu {
 
     private Long menuId;

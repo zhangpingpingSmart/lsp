@@ -11,8 +11,8 @@ public class ResultData {
     private String message;
     private Object data;
 
-    public static int succesStatus = 1;
-    public static int failStatus = 0;
+    public static int succesStatus = 0;
+    public static int failStatus = 1;
 
     public ResultData(int status, String message, Object data) {
         this.status = status;
