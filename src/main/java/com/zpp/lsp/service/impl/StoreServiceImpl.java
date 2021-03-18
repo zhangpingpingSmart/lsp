@@ -20,4 +20,9 @@ public class StoreServiceImpl implements StoreService {
     public Store getUserByUserId(String storeId) {
         return storeMapper.selectById(storeId);
     }
+
+    @Override
+    public Store getStoreByStoreNameAndPassword(Store store) {
+        return storeMapper.getStoreByStoreNameAndPassword(store);
+    }
 }

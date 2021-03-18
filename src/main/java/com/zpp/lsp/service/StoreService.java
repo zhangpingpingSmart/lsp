@@ -8,4 +8,5 @@ import com.zpp.lsp.pojo.Store;
  */
 public interface StoreService {
     Store getUserByUserId(String storeId);
+    Store getStoreByStoreNameAndPassword(Store store);
 }

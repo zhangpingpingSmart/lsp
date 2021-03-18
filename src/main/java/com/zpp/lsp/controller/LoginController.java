@@ -3,8 +3,10 @@ package com.zpp.lsp.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.zpp.lsp.common.ResultData;
 import com.zpp.lsp.config.redis.RedisKeyConfig;
+import com.zpp.lsp.pojo.Store;
 import com.zpp.lsp.pojo.User;
 import com.zpp.lsp.service.LoginService;
+import com.zpp.lsp.service.StoreService;
 import com.zpp.lsp.service.UserService;
 import com.zpp.lsp.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ public class LoginController {
     @Autowired
     private UserService userService;
     @Autowired
+    private StoreService storeService;
+    @Autowired
     private RedisTemplate<String,String> redisTemplate;
 
     /**
@@ -47,6 +51,28 @@ public class LoginController {
             JSONObject jo =new JSONObject();
             jo.put("token",token);
             jo.put("user",user);
+            return ResultData.success("登录成功！", jo);
+        }
+        return ResultData.failure("用户名或密码错误！");
+    }
+
+    /**
+     * 商户登录
+     * @param store
+     * @return
+     */
+    @PostMapping("/store")
+    public ResultData userLogin(@RequestBody Store store){
+        store.setStorePassword(MD5Util.MD5(store.getStorePassword()));
+        Store u = storeService.getStoreByStoreNameAndPassword(store);
+        if (u!=null){
+            //token生成规则：LOGIN_TOKEN+用户名 +密码+盐（md5加密）+时间戳
+            String token= MD5Util.MD5(u.getStoreName()+u.getStorePassword()+u.getSalt()+System.currentTimeMillis());
+            redisTemplate.boundValueOps(RedisKeyConfig.LOGIN_TOKEN+token).set(JSONObject.toJSON(u).toString());
+            redisTemplate.expire(RedisKeyConfig.LOGIN_TOKEN+token,1800, TimeUnit.SECONDS);
+            JSONObject jo =new JSONObject();
+            jo.put("token",token);
+            jo.put("store",store);
             return ResultData.success("登录成功！", jo);
         }
         return ResultData.failure("用户名或密码错误！");

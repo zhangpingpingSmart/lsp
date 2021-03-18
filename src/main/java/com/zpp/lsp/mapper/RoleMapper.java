@@ -2,6 +2,7 @@ package com.zpp.lsp.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zpp.lsp.pojo.Role;
+import com.zpp.lsp.pojo.Store;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -13,4 +14,6 @@ import java.util.List;
 public interface RoleMapper extends BaseMapper<Role> {
 
     List<Role> getRolesByStoreId(String storeId);
+
+    Store getStoreByStoreNameAndPassword(String store);
 }

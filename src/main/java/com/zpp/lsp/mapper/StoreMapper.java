@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface StoreMapper extends BaseMapper<Store> {
     List<Store> getStoresByRoleId(String roleId);
+    Store getStoreByStoreNameAndPassword(Store store);
 }
