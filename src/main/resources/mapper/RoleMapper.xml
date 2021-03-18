@@ -15,6 +15,7 @@
        zr.role_id=zsr.role_id
        WHERE
        zsr.store_id=#{storeId}
+       order by zr.role_id desc
     </select>
 
 </mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpp.lsp.mapper.MenuMapper">
+
+    <!-- 查找用户信息 -->
+    <select id="getMenusByRoleId" resultType="com.zpp.lsp.pojo.Menu">
+        SELECT
+        zm.*
+        FROM
+        zpp_menu zm
+        LEFT JOIN
+        zpp_role_menu zrm
+        ON
+        zm.menu_id = zrm.menu_id
+        WHERE
+        zrm.role_id=#{roleId}
+        order by zm.menu_id desc
+    </select>
+
+</mapper>

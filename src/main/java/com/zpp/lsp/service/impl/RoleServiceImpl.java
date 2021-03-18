@@ -19,9 +19,6 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleMapper roleMapper;
 
-    @Autowired
-    private StoreMapper storeMapper;
-
     /**
      * 根据商家查角色
      * @param storeId
@@ -31,13 +28,5 @@ public class RoleServiceImpl implements RoleService {
     public List<Role> getRolesByStoreId(String storeId) {
         return roleMapper.getRolesByStoreId(storeId);
     }
-    /**
-     * 根据角色查询商家
-     * @param roleId
-     * @return
-     */
-    @Override
-    public List<Store> getStoresByRoleId(String roleId) {
-        return storeMapper.getStoresByRoleId(roleId);
-    }
+
 }

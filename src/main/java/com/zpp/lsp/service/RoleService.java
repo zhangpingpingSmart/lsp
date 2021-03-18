@@ -16,10 +16,5 @@ public interface RoleService {
      * @return
      */
     List<Role> getRolesByStoreId(String storeId);
-    /**
-     * 根据角色查询商家
-     * @param roleId
-     * @return
-     */
-    List<Store> getStoresByRoleId(String roleId);
+
 }

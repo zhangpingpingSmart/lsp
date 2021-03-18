@@ -15,6 +15,7 @@
        zs.store_id=zsr.store_id
        WHERE
        zsr.role_id=#{roleId}
+       order by zs.store_id desc
     </select>
     <!-- 查找用户信息 -->
     <select id="getStoreByStoreNameAndPassword" resultType="com.zpp.lsp.pojo.Store">

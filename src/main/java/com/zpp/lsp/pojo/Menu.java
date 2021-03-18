@@ -3,6 +3,8 @@ package com.zpp.lsp.pojo;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Data
 @TableName("zpp_menu")
@@ -28,4 +30,5 @@ public class Menu {
 
     private String remark;
 
+    private List<Menu> childMenus;
 }

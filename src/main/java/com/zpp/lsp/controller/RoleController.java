@@ -31,16 +31,6 @@ public class RoleController {
         return ResultData.success(roles);
     }
 
-    /**
-     * 根据角色查询商家
-     * @param roleId
-     * @return
-     */
-    @PostMapping("/roleStores/{roleId}")
-    public ResultData getStoresByRoleId(@PathVariable("roleId")String roleId){
-        List<Store> stores = roleService.getStoresByRoleId(roleId);
-        return ResultData.success(stores);
-    }
 
 
 }
