@@ -44,7 +44,12 @@ public class StoreController {
      * @param roleId
      * @return
      */
+    @Priv(login = true)
     @PostMapping("/roleStores/{roleId}")
+    @ApiOperation(value = "根据角色id获取商户信息",httpMethod = "POST")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "roleId",value = "角色id",required = true,paramType = "path",dataType = "String")
+    })
     public ResultData getStoresByRoleId(@PathVariable("roleId")String roleId){
         List<Store> stores = storeService.getStoresByRoleId(roleId);
         return ResultData.success(stores);
