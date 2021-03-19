@@ -32,14 +32,25 @@ public class MenuController {
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "storeId",value = "商户id",required = true,paramType = "path",dataType = "String")
     })
-    public ResultData getUserByUserId(@PathVariable("storeId") String storeId){
+    public ResultData getMenusByStoreId(@PathVariable("storeId") String storeId){
         List<Menu> menus=menuService.getMenusByStoreId(storeId);
         return ResultData.success(menus);
     }
 
     @Priv(login = true)
+    @PostMapping("/{menuId}")
+    @ApiOperation(value = "根据id查询菜单")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "menuId",value = "菜单id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData getMenuById(@PathVariable("menuId")String menuId){
+        Menu menu=menuService.getMenuById(menuId);
+        return ResultData.success(menu);
+    }
+
+    @Priv(login = true)
     @PostMapping("/add")
-    @ApiOperation(value = "新增商家")
+    @ApiOperation(value = "新增菜单")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "menu", value = "菜单表单", required = true, dataType = "Menu")
     })
@@ -50,7 +61,7 @@ public class MenuController {
 
     @Priv(login = true)
     @PutMapping("/update")
-    @ApiOperation(value = "新增商家")
+    @ApiOperation(value = "修改菜单")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "menu", value = "菜单表单", required = true, dataType = "Menu")
     })

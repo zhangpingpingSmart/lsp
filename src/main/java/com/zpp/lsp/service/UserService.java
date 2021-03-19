@@ -11,4 +11,10 @@ public interface UserService {
     User getUserByUserId(String userId);
 
     User getUserByUserNameAndPassword(User user);
+
+    void saveUser(User user);
+
+    void updateUserById(User user);
+
+    void deleteUserById(String userId);
 }

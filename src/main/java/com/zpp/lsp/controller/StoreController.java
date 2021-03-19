@@ -10,10 +10,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,8 +31,8 @@ public class StoreController {
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "storeId",value = "商户id",required = true,paramType = "path",dataType = "String")
     })
-    public ResultData getUserByUserId(@PathVariable("storeId") String storeId){
-        Store store=storeService.getUserByUserId(storeId);
+    public ResultData getStoreById(@PathVariable("storeId") String storeId){
+        Store store=storeService.getStoreById(storeId);
         return ResultData.success(store);
     }
 
@@ -54,4 +51,37 @@ public class StoreController {
         List<Store> stores = storeService.getStoresByRoleId(roleId);
         return ResultData.success(stores);
     }
+
+    @Priv(login = true)
+    @PostMapping("/add")
+    @ApiOperation(value = "新增商家")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "role", value = "商家表单", required = true, dataType = "Role")
+    })
+    public ResultData saveStore(@RequestBody Store store){
+        storeService.saveStore(store);
+        return ResultData.success("新增成功");
+    }
+
+    @Priv(login = true)
+    @PutMapping("/update")
+    @ApiOperation(value = "修改菜单")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "role", value = "菜单表单", required = true, dataType = "Role")
+    })
+    public ResultData updateStoreById(@RequestBody Store store){
+        storeService.updateStoreById(store);
+        return ResultData.success("编辑成功");
+    }
+    @Priv(login = true)
+    @DeleteMapping("/del/{storeId}")
+    @ApiOperation(value = "根据id删除商家")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "storeId",value = "菜单id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData deleteStoreById(@PathVariable("storeId")String storeId){
+        storeService.deleteStoreById(storeId);
+        return ResultData.success("删除成功");
+    }
+
 }

@@ -40,6 +40,48 @@ public class RoleController {
         return ResultData.success(roles);
     }
 
+    @Priv(login = true)
+    @PostMapping("/{roleId}")
+    @ApiOperation(value = "根据id查询菜单")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "roleId",value = "角色id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData getRoleById(@PathVariable("roleId")String roleId){
+        Role Role=roleService.getRoleById(roleId);
+        return ResultData.success(Role);
+    }
+
+    @Priv(login = true)
+    @PostMapping("/add")
+    @ApiOperation(value = "新增菜单")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "role", value = "角色表单", required = true, dataType = "Role")
+    })
+    public ResultData addRole(@RequestBody Role role){
+        roleService.saveRole(role);
+        return ResultData.success("新增成功");
+    }
+
+    @Priv(login = true)
+    @PutMapping("/update")
+    @ApiOperation(value = "修改菜单")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "role", value = "菜单表单", required = true, dataType = "Role")
+    })
+    public ResultData updateRoleById(@RequestBody Role role){
+        roleService.updateRoleById(role);
+        return ResultData.success("编辑成功");
+    }
+    @Priv(login = true)
+    @DeleteMapping("/del/{roleId}")
+    @ApiOperation(value = "根据id删除菜单")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "roleId",value = "菜单id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData deleteRoleById(@PathVariable("roleId")String roleId){
+        roleService.deleteRoleById(roleId);
+        return ResultData.success("删除成功");
+    }
 
 
 }

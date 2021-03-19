@@ -29,4 +29,24 @@ public class RoleServiceImpl implements RoleService {
         return roleMapper.getRolesByStoreId(storeId);
     }
 
+    @Override
+    public Role getMenuById(String roleId) {
+        return roleMapper.selectById(roleId);
+    }
+
+    @Override
+    public void saveMenu(Role role) {
+        roleMapper.insert(role);
+    }
+
+    @Override
+    public void updateMenuById(Role role) {
+        roleMapper.updateById(role);
+    }
+
+    @Override
+    public void deleteMenuById(String roleId) {
+        roleMapper.deleteById(roleId);
+    }
+
 }

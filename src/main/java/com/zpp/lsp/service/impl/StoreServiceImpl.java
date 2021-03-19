@@ -19,7 +19,7 @@ public class StoreServiceImpl implements StoreService {
     private StoreMapper storeMapper;
 
     @Override
-    public Store getUserByUserId(String storeId) {
+    public Store getStoreById(String storeId) {
         return storeMapper.selectById(storeId);
     }
 
@@ -36,5 +36,20 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public List<Store> getStoresByRoleId(String roleId) {
         return storeMapper.getStoresByRoleId(roleId);
+    }
+
+    @Override
+    public void saveStore(Store store) {
+        storeMapper.insert(store);
+    }
+
+    @Override
+    public void updateStoreById(Store store) {
+        storeMapper.updateById(store);
+    }
+
+    @Override
+    public void deleteStoreById(String storeId) {
+        storeMapper.deleteById(storeId);
     }
 }

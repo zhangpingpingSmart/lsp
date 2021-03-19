@@ -32,4 +32,37 @@ public class UserController {
         User user=userService.getUserByUserId(userId);
         return ResultData.success(user);
     }
+
+    @Priv(login = true)
+    @PostMapping("/add")
+    @ApiOperation(value = "新增用户")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "user", value = "菜单表单", required = true, dataType = "User")
+    })
+    public ResultData addUser(@RequestBody User user){
+        userService.saveUser(user);
+        return ResultData.success("新增成功");
+    }
+
+    @Priv(login = true)
+    @PutMapping("/update")
+    @ApiOperation(value = "修改用户")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "user", value = "用户表单", required = true, dataType = "User")
+    })
+    public ResultData updateUserById(@RequestBody User user){
+        userService.updateUserById(user);
+        return ResultData.success("编辑成功");
+    }
+    @Priv(login = true)
+    @DeleteMapping("/del/{userId}")
+    @ApiOperation(value = "根据id删除用户")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "userId",value = "菜用户id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData deleteMenuById(@PathVariable("userId")String userId){
+        userService.deleteUserById(userId);
+        return ResultData.success("删除成功");
+    }
+
 }

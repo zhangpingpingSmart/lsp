@@ -16,5 +16,8 @@ public interface RoleService {
      * @return
      */
     List<Role> getRolesByStoreId(String storeId);
-
+    Role getRoleById(String roleId);
+    void saveRole(Role role);
+    void updateRoleById(Role role);
+    void deleteRoleById(String roleId);
 }

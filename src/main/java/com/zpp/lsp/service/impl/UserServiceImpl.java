@@ -32,4 +32,19 @@ public class UserServiceImpl implements UserService {
         //校验用户名密码，用户信息写入redis
         return userMapper.getUserByUserNameAndPassword(user.getUserName(),user.getPassword());
     }
+
+    @Override
+    public void saveUser(User user) {
+        userMapper.insert(user);
+    }
+
+    @Override
+    public void updateUserById(User user) {
+        userMapper.updateById(user);
+    }
+
+    @Override
+    public void deleteUserById(String userId) {
+        userMapper.deleteById(userId);
+    }
 }
