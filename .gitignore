@@ -21,7 +21,6 @@ HELP.md
 mvnw
 mvnw.cmd
 *.log
-*.class
 
 ### NetBeans ###
 /nbproject/private/
