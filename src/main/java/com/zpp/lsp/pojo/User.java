@@ -55,4 +55,7 @@ public class User {
 
     @ApiModelProperty(hidden = true)
     private String salt;
+
+    @ApiModelProperty(hidden = true)
+    private Integer isDelete;
 }

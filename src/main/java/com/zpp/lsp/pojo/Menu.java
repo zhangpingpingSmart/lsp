@@ -3,6 +3,7 @@ package com.zpp.lsp.pojo;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.models.auth.In;
 import lombok.Data;
 
 import java.util.List;
@@ -45,4 +46,7 @@ public class Menu {
 
     @ApiModelProperty(hidden = true)
     private List<Menu> childMenus;
+
+    @ApiModelProperty(hidden = true)
+    private Integer isDelete;
 }

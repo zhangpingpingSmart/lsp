@@ -32,7 +32,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public Menu getMenuById(String menuId) {
-        return menuMapper.selectById(menuId);
+        return menuMapper.getMenuById(menuId);
     }
 
     @Override

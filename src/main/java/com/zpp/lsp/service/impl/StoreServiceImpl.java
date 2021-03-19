@@ -20,7 +20,7 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public Store getStoreById(String storeId) {
-        return storeMapper.selectById(storeId);
+        return storeMapper.getStoreById(storeId);
     }
 
     @Override

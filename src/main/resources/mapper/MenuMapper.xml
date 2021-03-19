@@ -15,7 +15,18 @@
         zm.menu_id = zrm.menu_id
         WHERE
         zrm.role_id=#{roleId}
+        and
+        zm.is_delete=0
         order by zm.menu_id desc
     </select>
-
+    <select id="getMenuById" resultType="com.zpp.lsp.pojo.Menu">
+        select
+        *
+        from
+        zpp_menu
+        where
+        menu_id=#{menuId}
+        and
+        is_delete=0
+    </select>
 </mapper>

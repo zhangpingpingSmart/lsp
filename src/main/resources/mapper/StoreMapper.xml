@@ -15,11 +15,22 @@
        zs.store_id=zsr.store_id
        WHERE
        zsr.role_id=#{roleId}
+       and
+       zd.is_delete=0
        order by zs.store_id desc
     </select>
     <!-- 查找用户信息 -->
     <select id="getStoreByStoreNameAndPassword" resultType="com.zpp.lsp.pojo.Store">
        select * from zpp_store where store_name=#{storeName} and store_password=#{storePassword}
     </select>
-
+    <select id="getStoreById" resultType="com.zpp.lsp.pojo.Store">
+        select
+        *
+        from
+        zpp_store
+        where
+        store_id=#{storeId}
+        and
+        is_delete=0
+    </select>
 </mapper>

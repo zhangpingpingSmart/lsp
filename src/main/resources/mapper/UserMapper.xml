@@ -8,4 +8,14 @@
        select * from zpp_user where user_name=#{userName} and password=#{password}
     </select>
 
+    <select id="getUserByUserId" resultType="com.zpp.lsp.pojo.User">
+        select
+        *
+        from
+        zpp_user
+        where
+        user_id=#{userId}
+        and
+        is_delete=0
+    </select>
 </mapper>

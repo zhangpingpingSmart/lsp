@@ -15,7 +15,19 @@
        zr.role_id=zsr.role_id
        WHERE
        zsr.store_id=#{storeId}
+       and
+       zr.is_delete=0
        order by zr.role_id desc
     </select>
 
+    <select id="getRoleById" resultType="com.zpp.lsp.pojo.Role">
+        select 
+        * 
+        from 
+        zpp_role
+        where
+        role_id=#{roleId}
+        and 
+        is_delete=0
+    </select>
 </mapper>

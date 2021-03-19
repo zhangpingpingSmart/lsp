@@ -26,4 +26,6 @@ public class Role {
     @ApiModelProperty(value = "角色描述",name = "description")
     private String description;
 
+    @ApiModelProperty(hidden = true)
+    private Integer isDelete;
 }

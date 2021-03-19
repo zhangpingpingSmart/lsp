@@ -16,4 +16,6 @@ public interface RoleMapper extends BaseMapper<Role> {
     List<Role> getRolesByStoreId(String storeId);
 
     Store getStoreByStoreNameAndPassword(String store);
+
+    Role getRoleById(String roleId);
 }

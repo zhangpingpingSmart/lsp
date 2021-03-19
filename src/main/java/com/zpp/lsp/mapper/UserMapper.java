@@ -9,4 +9,5 @@ import com.zpp.lsp.pojo.User;
  */
 public interface UserMapper extends BaseMapper<User> {
     User getUserByUserNameAndPassword(String userName,String password);
+    User getUserByUserId(String userId);
 }
