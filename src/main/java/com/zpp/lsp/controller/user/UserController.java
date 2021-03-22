@@ -1,4 +1,4 @@
-package com.zpp.lsp.controller;
+package com.zpp.lsp.controller.user;
 
 import com.zpp.lsp.common.ResultData;
 import com.zpp.lsp.config.login.Priv;
@@ -37,7 +37,7 @@ public class UserController {
     @PostMapping("/add")
     @ApiOperation(value = "新增用户")
     @ApiImplicitParams(value = {
-            @ApiImplicitParam(name = "user", value = "菜单表单", required = true, dataType = "User")
+            @ApiImplicitParam(name = "user", value = "用户表单", required = true, dataType = "User")
     })
     public ResultData addUser(@RequestBody User user){
         userService.saveUser(user);
@@ -58,9 +58,9 @@ public class UserController {
     @DeleteMapping("/del/{userId}")
     @ApiOperation(value = "根据id删除用户")
     @ApiImplicitParams(value = {
-            @ApiImplicitParam(name = "userId",value = "菜用户id",required = true,paramType = "path",dataType = "String")
+            @ApiImplicitParam(name = "userId",value = "用户id",required = true,paramType = "path",dataType = "String")
     })
-    public ResultData deleteMenuById(@PathVariable("userId")String userId){
+    public ResultData deleteUserById(@PathVariable("userId")String userId){
         userService.deleteUserById(userId);
         return ResultData.success("删除成功");
     }

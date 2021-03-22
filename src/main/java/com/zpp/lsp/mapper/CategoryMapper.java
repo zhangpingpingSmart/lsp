@@ -8,4 +8,8 @@ import com.zpp.lsp.pojo.Category;
  * @Date: 2021/3/22 14:44
  */
 public interface CategoryMapper extends BaseMapper<Category> {
+
+    Category getCategoryByCategoryId(String categoryId);
+
+    void deleteCategoryById(String categoryId);
 }

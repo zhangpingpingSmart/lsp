@@ -1,4 +1,4 @@
-package com.zpp.lsp.controller;
+package com.zpp.lsp.controller.user;
 
 import com.zpp.lsp.common.ResultData;
 import com.zpp.lsp.config.login.Priv;
