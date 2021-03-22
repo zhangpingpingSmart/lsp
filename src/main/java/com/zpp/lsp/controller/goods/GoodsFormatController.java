@@ -2,10 +2,8 @@ package com.zpp.lsp.controller.goods;
 
 import com.zpp.lsp.common.ResultData;
 import com.zpp.lsp.config.login.Priv;
-import com.zpp.lsp.pojo.Goods;
 import com.zpp.lsp.pojo.GoodsFormat;
 import com.zpp.lsp.service.GoodsFormatService;
-import com.zpp.lsp.service.GoodsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -19,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/zpp/goodsFormat")
-@Api(tags = "商品规格规格相关接口")
+@Api(tags = "商品规格相关接口")
 public class GoodsFormatController {
 
     @Autowired

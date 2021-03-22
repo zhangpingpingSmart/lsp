@@ -8,4 +8,7 @@ import com.zpp.lsp.pojo.GoodsPicture;
  * @Date: 2021/3/22 16:14
  */
 public interface GoodsPictureMapper extends BaseMapper<GoodsPicture> {
+    GoodsPicture getGoodsPictureById(String goodsPictureId);
+
+    void deleteGoodsPictureById(String goodsPictureId);
 }
