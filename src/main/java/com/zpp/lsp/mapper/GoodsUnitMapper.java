@@ -8,4 +8,5 @@ import com.zpp.lsp.pojo.GoodsUnit;
  * @Date: 2021/3/22 16:14
  */
 public interface GoodsUnitMapper extends BaseMapper<GoodsUnit> {
+    GoodsUnit getGoodsUnitById(String goodsUnitId);
 }

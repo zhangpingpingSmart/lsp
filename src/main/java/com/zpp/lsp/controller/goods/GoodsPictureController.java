@@ -2,10 +2,8 @@ package com.zpp.lsp.controller.goods;
 
 import com.zpp.lsp.common.ResultData;
 import com.zpp.lsp.config.login.Priv;
-import com.zpp.lsp.pojo.Goods;
 import com.zpp.lsp.pojo.GoodsPicture;
 import com.zpp.lsp.service.GoodsPictureService;
-import com.zpp.lsp.service.GoodsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

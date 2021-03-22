@@ -9,7 +9,7 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
-    <select id="" resultMap="goodsUnitMap" resultType="com.zpp.lsp.pojo.GoodsUnit">
+    <select id="getGoodsUnitById" resultMap="goodsUnitMap" resultType="com.zpp.lsp.pojo.GoodsUnit">
         select
             unit_id,
             unit_name,
@@ -18,7 +18,5 @@
             goods_unit
         where
             unit_id=#{unitId}
-        and
-        is_delete=0
     </select>
 </mapper>
