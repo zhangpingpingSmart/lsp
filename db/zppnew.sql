@@ -11,7 +11,7 @@
  Target Server Version : 50648
  File Encoding         : 65001
 
- Date: 22/03/2021 14:36:42
+ Date: 22/03/2021 15:44:03
 */
 
 SET NAMES utf8mb4;
@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS `goods_format`;
 CREATE TABLE `goods_format`  (
   `format_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '规格id',
   `goods_id` bigint(20) NULL DEFAULT NULL COMMENT '商品id',
-  `unit_id` int(11) NULL DEFAULT NULL,
+  `unit_id` int(11) NULL DEFAULT NULL COMMENT '单位id',
   `format_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '规格名称',
   `format_price` decimal(12, 2) NULL DEFAULT NULL COMMENT '价格',
   `format_num` int(11) NULL DEFAULT NULL COMMENT '数量',
