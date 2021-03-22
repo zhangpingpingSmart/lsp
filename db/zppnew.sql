@@ -11,11 +11,120 @@
  Target Server Version : 50648
  File Encoding         : 65001
 
- Date: 19/03/2021 15:02:33
+ Date: 22/03/2021 14:36:42
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for category
+-- ----------------------------
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category`  (
+  `category_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '分类id',
+  `category_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分类编码',
+  `category_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分类名称',
+  `parent_id` int(11) NULL DEFAULT NULL COMMENT '父id',
+  `category_level` int(11) NULL DEFAULT NULL COMMENT '层级',
+  `category_seq` int(11) NULL DEFAULT NULL COMMENT '顺序号',
+  `is_end` int(11) NULL DEFAULT 0 COMMENT '是否末级：0非末级，1末级',
+  `category_status` int(11) NULL DEFAULT 0 COMMENT '状态：0启用，1停用',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `category_logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分类图标地址',
+  `is_delete` int(11) NOT NULL DEFAULT 0 COMMENT '是否删除：0未删除，1删除',
+  PRIMARY KEY (`category_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of category
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for goods
+-- ----------------------------
+DROP TABLE IF EXISTS `goods`;
+CREATE TABLE `goods`  (
+  `goods_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '商品id',
+  `category_id` int(11) NULL DEFAULT NULL COMMENT '分类id',
+  `goods_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品名称',
+  `goods_as` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '别名',
+  `goods_label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品标签',
+  `goods_brand` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品品牌',
+  `goods_desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品详情',
+  `store_id` bigint(20) NULL DEFAULT NULL COMMENT '商家id',
+  `goods_seq` int(11) NULL DEFAULT NULL COMMENT '顺序号',
+  `goods_status` int(11) NULL DEFAULT 0 COMMENT '商品状态：0上架，1下架',
+  `goods_remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品备注',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `is_delete` int(11) NULL DEFAULT 0 COMMENT '是否删除：0未删除，1删除',
+  PRIMARY KEY (`goods_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of goods
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for goods_format
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_format`;
+CREATE TABLE `goods_format`  (
+  `format_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '规格id',
+  `goods_id` bigint(20) NULL DEFAULT NULL COMMENT '商品id',
+  `unit_id` int(11) NULL DEFAULT NULL,
+  `format_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '规格名称',
+  `format_price` decimal(12, 2) NULL DEFAULT NULL COMMENT '价格',
+  `format_num` int(11) NULL DEFAULT NULL COMMENT '数量',
+  `format_seq` int(11) NULL DEFAULT NULL COMMENT '顺序号',
+  `format_status` int(11) NULL DEFAULT 0 COMMENT '状态：0启用，1禁用',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `platform_price` decimal(12, 2) NULL DEFAULT NULL COMMENT '平台价格',
+  `is_delete` int(11) NULL DEFAULT 0 COMMENT '是否删除：0未删除，1删除',
+  PRIMARY KEY (`format_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of goods_format
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for goods_method
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_method`;
+CREATE TABLE `goods_method`  (
+  `gm_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '商品加工方式关联表id',
+  `goods_id` bigint(20) NULL DEFAULT NULL COMMENT '商品id',
+  `method_id` int(11) NULL DEFAULT NULL COMMENT '加工方式id',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`gm_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of goods_method
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for goods_picture
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_picture`;
+CREATE TABLE `goods_picture`  (
+  `pic_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '图片主键id',
+  `goods_id` bigint(20) NULL DEFAULT NULL COMMENT '商品id',
+  `pic_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '图片url',
+  `pic_seq` int(11) NULL DEFAULT NULL COMMENT '顺序号',
+  `is_main` int(11) NULL DEFAULT NULL COMMENT '是否主图',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `is_delete` int(11) NULL DEFAULT 0 COMMENT '是否删除：0未删除，1删除',
+  PRIMARY KEY (`pic_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of goods_picture
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for hibernate_sequence
@@ -29,6 +138,23 @@ CREATE TABLE `hibernate_sequence`  (
 -- Records of hibernate_sequence
 -- ----------------------------
 INSERT INTO `hibernate_sequence` VALUES (1);
+
+-- ----------------------------
+-- Table structure for process_method
+-- ----------------------------
+DROP TABLE IF EXISTS `process_method`;
+CREATE TABLE `process_method`  (
+  `method_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '加工方式id',
+  `method_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '加工方式名称',
+  `method_status` int(11) NULL DEFAULT 0 COMMENT '状态：0启用，1停用',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `is_delete` int(11) NULL DEFAULT 0 COMMENT '是否删除：0未删除，1删除',
+  PRIMARY KEY (`method_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of process_method
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for zpp_menu
