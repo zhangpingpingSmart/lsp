@@ -8,4 +8,8 @@ import com.zpp.lsp.pojo.Goods;
  * @Date: 2021/3/22 16:13
  */
 public interface GoodsMapper extends BaseMapper<Goods> {
+
+    Goods getGoodsByGoodsId(String goodsId);
+
+    void deleteGoodsById(String goodsId);
 }

@@ -19,7 +19,7 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
-    <select id="" resultMap="goodsMap" resultType="com.zpp.lsp.pojo.Goods">
+    <select id="getGoodsByGoodsId" resultMap="goodsMap" resultType="com.zpp.lsp.pojo.Goods">
         select
             goods_id,
             category_id,
@@ -41,4 +41,8 @@
         and
         is_delete=0
     </select>
+
+    <update id="deleteGoodsById">
+        update goods set is_delete=1 where goods_id=#{goodsId}
+    </update>
 </mapper>
