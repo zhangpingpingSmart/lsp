@@ -8,4 +8,7 @@ import com.zpp.lsp.pojo.GoodsFormat;
  * @Date: 2021/3/22 16:13
  */
 public interface GoodsFormatMpper extends BaseMapper<GoodsFormat> {
+    GoodsFormat getGoodsByGoodsFormatId(String goodsFormatId);
+
+    void deleteGoodsFormatById(String goodsFormatId);
 }

@@ -16,7 +16,7 @@
         <result property="platformPrice" column="platform_price"/>
     </resultMap>
 
-    <select id="" resultMap="goodsFormatMap" resultType="com.zpp.lsp.pojo.GoodsFormat">
+    <select id="getGoodsByGoodsFormatId" resultMap="goodsFormatMap" resultType="com.zpp.lsp.pojo.GoodsFormat">
         select
             format_id,
             goods_id,
@@ -35,4 +35,8 @@
         and
         is_delete=0
     </select>
+
+    <update id="deleteGoodsFormatById">
+        update goods_format set is_delete=1 where format_id=#{formatId}
+    </update>
 </mapper>

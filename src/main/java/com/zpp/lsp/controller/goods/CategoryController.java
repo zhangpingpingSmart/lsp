@@ -3,7 +3,6 @@ package com.zpp.lsp.controller.goods;
 import com.zpp.lsp.common.ResultData;
 import com.zpp.lsp.config.login.Priv;
 import com.zpp.lsp.pojo.Category;
-import com.zpp.lsp.pojo.User;
 import com.zpp.lsp.service.CategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
