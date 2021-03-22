@@ -11,7 +11,7 @@
  Target Server Version : 50648
  File Encoding         : 65001
 
- Date: 22/03/2021 15:44:03
+ Date: 22/03/2021 15:58:47
 */
 
 SET NAMES utf8mb4;
@@ -124,6 +124,21 @@ CREATE TABLE `goods_picture`  (
 
 -- ----------------------------
 -- Records of goods_picture
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for goods_unit
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_unit`;
+CREATE TABLE `goods_unit`  (
+  `unit_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '单位id',
+  `unit_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单位名称',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`unit_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of goods_unit
 -- ----------------------------
 
 -- ----------------------------
