@@ -14,7 +14,7 @@ import java.util.List;
 @ApiModel(value = "Menu",description = "菜单表单")
 public class Menu {
 
-    @ApiModelProperty(value = "菜单id",name = "menuId",required = true)
+    @ApiModelProperty(value = "菜单id",name = "menuId")
     private Long menuId;
 
     @ApiModelProperty(value = "菜单名称",name = "menuName",required = true)

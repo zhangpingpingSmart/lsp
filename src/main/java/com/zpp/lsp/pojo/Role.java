@@ -11,7 +11,7 @@ import java.util.Date;
 @TableName("zpp_role")
 @ApiModel(value = "Role",description = "角色表单")
 public class Role {
-    @ApiModelProperty(value = "角色id",name = "roleId",required = true)
+    @ApiModelProperty(value = "角色id",name = "roleId")
     private Long roleId;
 
     @ApiModelProperty(value = "角色父id",name = "parentRoleId",required = true)

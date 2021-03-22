@@ -16,4 +16,6 @@ public interface StoreMapper extends BaseMapper<Store> {
     Store getStoreByStoreNameAndPassword(Store store);
 
     Store getStoreById(String storeId);
+
+    void deleteStoreById(String storeId);
 }

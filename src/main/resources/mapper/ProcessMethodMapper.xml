@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpp.lsp.mapper.ProcessMethodMapper">
+
+    <resultMap id="processMethodMap" type="ProcessMethod">
+        <id property="methodId" column="method_id"/>
+        <result property="methodName" column="method_name"/>
+        <result property="methodStatus" column="method_status"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <select id="" resultMap="processMethodMap" resultType="com.zpp.lsp.pojo.ProcessMethod">
+        select
+            method_id,
+            method_name,
+            method_status,
+            create_time
+        from
+            process_method
+        where
+            method_id=#{methodId}
+        and
+        is_delete=0
+    </select>
+</mapper>

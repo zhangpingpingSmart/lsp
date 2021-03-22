@@ -14,4 +14,6 @@ public interface MenuMapper extends BaseMapper<Menu> {
     List<Menu> getMenusByRoleId(Long roleId);
 
     Menu getMenuById(String menuId);
+
+    void deleteMenuById(String menuId);
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpp.lsp.mapper.GoodsUnitMapper">
+
+    <resultMap id="goodsUnitMap" type="GoodsUnit">
+        <id property="unitId" column="unit_id"/>
+        <result property="unitName" column="unit_name"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <select id="" resultMap="goodsUnitMap" resultType="com.zpp.lsp.pojo.GoodsUnit">
+        select
+            unit_id,
+            unit_name,
+            create_time
+        from
+            goods_unit
+        where
+            unit_id=#{unitId}
+        and
+        is_delete=0
+    </select>
+</mapper>

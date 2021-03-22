@@ -47,7 +47,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public void deleteMenuById(String menuId) {
-        menuMapper.deleteById(menuId);
+        menuMapper.deleteMenuById(menuId);
     }
 
     /**

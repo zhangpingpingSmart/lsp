@@ -3,10 +3,32 @@
 
 <mapper namespace="com.zpp.lsp.mapper.MenuMapper">
 
+    <resultMap id="menuMap" type="Menu">
+        <id property="menuId" column="menu_id"/>
+        <result property="menuName" column="menu_name"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="orderNum" column="order_num"/>
+        <result property="url" column="url"/>
+        <result property="menuType" column="menu_type"/>
+        <result property="visible" column="visible"/>
+        <result property="perms" column="perms"/>
+        <result property="icon" column="icon"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
     <!-- 查找用户信息 -->
-    <select id="getMenusByRoleId" resultType="com.zpp.lsp.pojo.Menu">
+    <select id="getMenusByRoleId" resultMap="menuMap" resultType="com.zpp.lsp.pojo.Menu">
         SELECT
-        zm.*
+        zm.menu_id,
+        zm.menu_name,
+        zm.parent_id,
+        zm.order_num,
+        zm.url,
+        zm.menu_type,
+        zm.visible,
+        zm.perms,
+        zm.icon,
+        zm.remark
         FROM
         zpp_menu zm
         LEFT JOIN
@@ -19,9 +41,18 @@
         zm.is_delete=0
         order by zm.menu_id desc
     </select>
-    <select id="getMenuById" resultType="com.zpp.lsp.pojo.Menu">
+    <select id="getMenuById" resultMap="menuMap" resultType="com.zpp.lsp.pojo.Menu">
         select
-        *
+            menu_id,
+            menu_name,
+            parent_id,
+            order_num,
+            url,
+            menu_type,
+            visible,
+            perms,
+            icon,
+            remark
         from
         zpp_menu
         where
@@ -29,4 +60,8 @@
         and
         is_delete=0
     </select>
+
+    <update id="deleteMenuById">
+        update zpp_menu set is_delete=1 where menu_id=#{menuId}
+    </update>
 </mapper>

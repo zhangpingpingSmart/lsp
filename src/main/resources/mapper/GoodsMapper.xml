@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpp.lsp.mapper.GoodsMapper">
+
+    <resultMap id="goodsMap" type="Goods">
+        <id property="goodsId" column="goods_id"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="goodsName" column="goods_name"/>
+        <result property="goodsAs" column="goods_as"/>
+        <result property="goodsLabel" column="goods_label"/>
+        <result property="goodsBrand" column="goods_brand"/>
+        <result property="goodsDesc" column="goods_desc"/>
+        <result property="storeId" column="store_id"/>
+        <result property="goodsSeq" column="goods_seq"/>
+        <result property="goodsStatus" column="goods_status"/>
+        <result property="goodsRemark" column="goods_remark"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="" resultMap="goodsMap" resultType="com.zpp.lsp.pojo.Goods">
+        select
+            goods_id,
+            category_id,
+            goods_name,
+            goods_as,
+            goods_label,
+            goods_brand,
+            goods_desc,
+            store_id,
+            goods_seq,
+            goods_status,
+            goods_remark,
+            create_time,
+            update_time,
+        from
+            goods
+        where
+            goods_Id=#{goodsId}
+        and
+        is_delete=0
+    </select>
+</mapper>

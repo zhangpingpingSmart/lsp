@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpp.lsp.mapper.GoodsPictureMapper">
+
+    <resultMap id="goodsPictureMap" type="GoodsPicture">
+        <id property="picId" column="pic_id"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="picUrl" column="pic_url"/>
+        <result property="picSeq" column="pic_seq"/>
+        <result property="isMain" column="is_main"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="" resultType="com.zpp.lsp.pojo.GoodsPicture">
+        select
+            pic_id,
+            goods_id,
+            pic_url,
+            pic_seq,
+            is_main,
+            create_time,
+            update_time
+        from
+            goods_picture
+        where
+            pic_id=#{picId}
+        and
+        is_delete=0
+    </select>
+</mapper>

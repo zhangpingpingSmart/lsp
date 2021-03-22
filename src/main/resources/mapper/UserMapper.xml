@@ -3,19 +3,61 @@
 
 <mapper namespace="com.zpp.lsp.mapper.UserMapper">
 
+    <resultMap id="userMap" type="User">
+        <id property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="password"/>
+        <result property="fullName" column="full_name"/>
+        <result property="mobile" column="mobile"/>
+        <result property="email" column="email"/>
+        <result property="createTime" column="create_time"/>
+        <result property="loginTime" column="login_time"/>
+        <result property="lastLoginTime" column="last_login_time"/>
+        <result property="loginCount" column="login_count"/>
+    </resultMap>
+
     <!-- 查找用户信息 -->
-    <select id="getUserByUserNameAndPassword" resultType="com.zpp.lsp.pojo.User">
-       select * from zpp_user where user_name=#{userName} and password=#{password}
+    <select id="getUserByUserNameAndPassword" resultMap="userMap" resultType="com.zpp.lsp.pojo.User">
+       select
+            user_id,
+            user_name,
+            password,
+            full_name,
+            mobile,
+            email,
+            create_time,
+            login_time,
+            last_login_time,
+            login_count
+        from
+            zpp_user
+        where
+            user_name=#{userName}
+        and
+            password=#{password}
     </select>
 
-    <select id="getUserByUserId" resultType="com.zpp.lsp.pojo.User">
+    <select id="getUserByUserId" resultMap="userMap" resultType="com.zpp.lsp.pojo.User">
         select
-        *
+            user_id,
+            user_name,
+            password,
+            full_name,
+            mobile,
+            email,
+            create_time,
+            login_time,
+            last_login_time,
+            login_count
         from
-        zpp_user
+            zpp_user
         where
-        user_id=#{userId}
+            user_id=#{userId}
         and
-        is_delete=0
+            is_delete=0
     </select>
+
+    <update id="deleteUserById">
+        update zpp_user set is_delete=1 where user_id=#{userId}
+    </update>
 </mapper>

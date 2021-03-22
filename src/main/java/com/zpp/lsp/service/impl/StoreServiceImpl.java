@@ -50,6 +50,6 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public void deleteStoreById(String storeId) {
-        storeMapper.deleteById(storeId);
+        storeMapper.deleteStoreById(storeId);
     }
 }

@@ -17,7 +17,7 @@ import java.util.Date;
 @TableName("zpp_user")
 @ApiModel(value = "User",description = "用户表单")
 public class User {
-    @ApiModelProperty(value = "用户id",name = "userId",required = true)
+    @ApiModelProperty(value = "用户id",name = "userId")
     private Long userId;
 
     @ApiModelProperty(value = "用户名",name = "userName",required = true)

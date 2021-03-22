@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpp.lsp.mapper.GoodsFormatMpper">
+
+    <resultMap id="goodsFormatMap" type="GoodsFormat">
+        <id property="formatId" column="format_id"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="unitId" column="unit_id"/>
+        <result property="formatName" column="format_name"/>
+        <result property="formaPrice" column="format_price"/>
+        <result property="formatNum" column="format_num"/>
+        <result property="formatSeq" column="format_seq"/>
+        <result property="formatStatus" column="format_status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="platformPrice" column="platform_price"/>
+    </resultMap>
+
+    <select id="" resultMap="goodsFormatMap" resultType="com.zpp.lsp.pojo.GoodsFormat">
+        select
+            format_id,
+            goods_id,
+            unit_id,
+            format_name,
+            format_price,
+            format_num,
+            format_seq,
+            format_status,
+            create_time,
+            platform_price
+        from
+            goods_format
+        where
+            format_id=#{formatId}
+        and
+        is_delete=0
+    </select>
+</mapper>

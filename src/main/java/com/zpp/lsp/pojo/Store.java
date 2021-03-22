@@ -18,7 +18,7 @@ import java.util.Date;
 @ApiModel(value = "Store",description = "商家表单")
 public class Store {
 
-    @ApiModelProperty(value = "商家id",name = "storeId",required = true)
+    @ApiModelProperty(value = "商家id",name = "storeId")
     private Long storeId;
 
     @ApiModelProperty(value = "商家用户名称",name = "storeName",required = true)
