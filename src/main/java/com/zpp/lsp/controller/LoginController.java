@@ -1,4 +1,4 @@
-package com.zpp.lsp.controller.system;
+package com.zpp.lsp.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zpp.lsp.common.ResultData;
