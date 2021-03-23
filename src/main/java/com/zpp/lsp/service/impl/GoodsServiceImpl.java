@@ -2,11 +2,13 @@ package com.zpp.lsp.service.impl;
 
 import com.zpp.lsp.mapper.GoodsMapper;
 import com.zpp.lsp.pojo.Goods;
+import com.zpp.lsp.pojo.make.GoodsMake;
 import com.zpp.lsp.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: 张平平
@@ -39,8 +41,13 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> getGoodsByCategoryId(String categoryId) {
+    public List<Map> getGoodsByCategoryId(String categoryId) {
 
         return goodsMapper.getGoodsByCategoryId(categoryId);
+    }
+
+    @Override
+    public GoodsMake getGoodsDetailById(String goodsId) {
+        return goodsMapper.getGoodsDetailById(goodsId);
     }
 }

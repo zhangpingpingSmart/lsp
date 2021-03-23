@@ -1,8 +1,10 @@
 package com.zpp.lsp.service;
 
 import com.zpp.lsp.pojo.Goods;
+import com.zpp.lsp.pojo.make.GoodsMake;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: 张平平
@@ -17,5 +19,7 @@ public interface GoodsService {
 
     void deleteGoodsById(String goodsId);
 
-    List<Goods> getGoodsByCategoryId(String categoryId);
+    List<Map> getGoodsByCategoryId(String categoryId);
+
+    GoodsMake getGoodsDetailById(String goodsId);
 }

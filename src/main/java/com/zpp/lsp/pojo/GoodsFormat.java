@@ -26,6 +26,9 @@ public class GoodsFormat {
     @ApiModelProperty(value = "单位id",name = "unitId",required = true)
     private Integer unitId;
 
+    @ApiModelProperty(hidden = true)
+    private String unitName;
+
     @ApiModelProperty(value = "规格名称",name = "formatName",required = true)
     private String formatName;
 

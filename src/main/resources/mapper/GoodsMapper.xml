@@ -19,6 +19,37 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
+    <resultMap id="GoodsDetailMap" type="com.zpp.lsp.pojo.make.GoodsMake">
+        <id property="goodsId" column="goods_id"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="goodsName" column="goods_name"/>
+        <result property="goodsAs" column="goods_as"/>
+        <result property="goodsLabel" column="goods_label"/>
+        <result property="goodsBrand" column="goods_brand"/>
+        <result property="goodsDesc" column="goods_desc"/>
+        <result property="goodsSeq" column="goods_seq"/>
+        <result property="goodsRemark" column="goods_remark"/>
+        <result property="createTime" column="create_time"/>
+        <result property="storeName" column="store_name"/>
+        <result property="storeAddr" column="store_addr"/>
+        <collection property="goodsFormatList" ofType="com.zpp.lsp.pojo.GoodsFormat">
+            <result property="formatName" column="format_name"/>
+            <result property="formaPrice" column="format_price"/>
+            <result property="formatNum" column="format_num"/>
+            <result property="formatSeq" column="format_seq"/>
+            <result property="unitName" column="unit_name"/>
+            <result property="platformPrice" column="platform_price"/>
+        </collection>
+        <collection property="goodsPictureList" ofType="com.zpp.lsp.pojo.GoodsPicture">
+            <result property="picUrl" column="pic_url"/>
+            <result property="picSeq" column="pic_seq"/>
+            <result property="isMain" column="is_main"/>
+        </collection>
+        <collection property="processMethodList" column="com.zpp.lsp.pojo.ProcessMethod">
+            <result property="methodName" column="method_name"/>
+        </collection>
+    </resultMap>
+
     <select id="getGoodsByGoodsId" resultMap="goodsMap" resultType="com.zpp.lsp.pojo.Goods">
         select
             goods_id,
@@ -28,7 +59,6 @@
             goods_label,
             goods_brand,
             goods_desc,
-            store_id,
             goods_seq,
             goods_status,
             goods_remark,
@@ -42,28 +72,65 @@
         is_delete=0
     </select>
 
-    <!--根据分类id获取商品列表-->
-    <select id="getGoodsByCategoryId" resultMap="goodsMap" >
+    <select id="getGoodsByCategoryId" resultType="java.util.Map">
         select
-            goods_id,
-            category_id,
-            goods_name,
-            goods_as,
-            goods_label,
-            goods_brand,
-            goods_desc,
-            store_id,
-            goods_seq,
-            goods_status,
-            goods_remark,
-            create_time,
-            update_time,
+            g.goods_id,
+            g.goods_name,
+            g.category_id,
+            g.goods_as,
+            g.goods_label,
+            g.goods_brand,
+            g.goods_desc,
+            g.goods_seq,
+            g.goods_remark,
+            g.create_time,
+            zs.store_name,
+            zs.store_addr
         from
-            goods
+            goods g
+        left join zpp_store zs on zs.store_id=g.store_id
         where
-            category_id=#{categoryId}
-        and
-        is_delete=0
+            g.category_id=#{categoryId}
+        and g.is_delete=0
+        and g.goods_status=0
+    </select>
+    <!--商品详情-->
+    <select id="getGoodsDetailById" resultMap="GoodsDetailMap" >
+        select
+            g.goods_id,
+            g.goods_name,
+            g.category_id,
+            g.goods_as,
+            g.goods_label,
+            g.goods_brand,
+            g.goods_desc,
+            g.goods_seq,
+            g.goods_remark,
+            g.create_time,
+            zs.store_name,
+            zs.store_addr,
+            gf.format_name,
+            gf.format_price,
+            gf.format_num,
+            gf.format_seq,
+            gf.platform_price,
+            gu.unit_name,
+            gp.pic_url,
+            gp.pic_seq,
+            gp.is_main,
+            pm.method_name
+        from
+            goods g
+        left join zpp_store zs on zs.store_id=g.store_id
+        left join goods_format gf on gf.goods_id=g.goods_id and gf.format_status=0 and gf.is_delete=0
+        left join goods_unit gu on gu.unit_id=gf.unit_id
+        left join goods_picture gp on gp.goods_id=g.goods_id and gp.is_delete=0
+        left join goods_method gm on gm.goods_id=g.goods_id
+        left join process_method pm on pm.method_id=gm.method_id and pm.is_delete=0 and pm.method_status=0
+        where
+            g.goods_id=#{goodsId}
+        and g.is_delete=0
+        and g.goods_status=0
     </select>
     <update id="deleteGoodsById">
         update goods set is_delete=1 where goods_id=#{goodsId}
