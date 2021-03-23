@@ -6,6 +6,8 @@ import com.zpp.lsp.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author: 张平平
  * @Date: 2021/3/22 18:26
@@ -34,5 +36,11 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public void deleteGoodsById(String goodsId) {
         goodsMapper.deleteGoodsById(goodsId);
+    }
+
+    @Override
+    public List<Goods> getGoodsByCategoryId(String categoryId) {
+
+        return goodsMapper.getGoodsByCategoryId(categoryId);
     }
 }

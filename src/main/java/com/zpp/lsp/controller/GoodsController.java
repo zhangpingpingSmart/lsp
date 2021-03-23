@@ -2,6 +2,7 @@ package com.zpp.lsp.controller;
 
 import com.zpp.lsp.common.ResultData;
 import com.zpp.lsp.config.login.Priv;
+import com.zpp.lsp.pojo.Category;
 import com.zpp.lsp.pojo.Goods;
 import com.zpp.lsp.service.GoodsService;
 import io.swagger.annotations.Api;
@@ -10,6 +11,8 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Author: 张平平
@@ -64,5 +67,16 @@ public class GoodsController {
     public ResultData deleteGoodsById(@PathVariable("goodsId")String goodsId){
         goodsService.deleteGoodsById(goodsId);
         return ResultData.success("删除成功");
+    }
+
+    @Priv(login = true)
+    @PostMapping("/byCategory/{categoryId}")
+    @ApiOperation(value = "根据分类id获取商品列表")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "categoryId",value = "分类id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData getGoodsByCategoryId(@PathVariable("categoryId")String categoryId){
+        List<Goods> goods=goodsService.getGoodsByCategoryId(categoryId);
+        return ResultData.success(goods);
     }
 }

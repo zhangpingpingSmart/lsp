@@ -42,6 +42,29 @@
         is_delete=0
     </select>
 
+    <!--根据分类id获取商品列表-->
+    <select id="getGoodsByCategoryId" resultMap="goodsMap" >
+        select
+            goods_id,
+            category_id,
+            goods_name,
+            goods_as,
+            goods_label,
+            goods_brand,
+            goods_desc,
+            store_id,
+            goods_seq,
+            goods_status,
+            goods_remark,
+            create_time,
+            update_time,
+        from
+            goods
+        where
+            category_id=#{categoryId}
+        and
+        is_delete=0
+    </select>
     <update id="deleteGoodsById">
         update goods set is_delete=1 where goods_id=#{goodsId}
     </update>

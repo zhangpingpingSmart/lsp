@@ -67,8 +67,9 @@ public class CategoryController {
         categoryService.deleteCategoryById(categoryId);
         return ResultData.success("删除成功");
     }
+
     @Priv(login = true)
-    @PutMapping("/tree")
+    @GetMapping("/tree")
     @ApiOperation(value = "分类树")
     public ResultData getTree(){
         List<Category> tree=categoryService.getTree();
