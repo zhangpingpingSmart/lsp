@@ -2,6 +2,8 @@ package com.zpp.lsp.service;
 
 import com.zpp.lsp.pojo.Category;
 
+import java.util.List;
+
 /**
  * @Author: 张平平
  * @Date: 2021/3/22 17:56
@@ -14,4 +16,6 @@ public interface CategoryService {
     void updateCategoryById(Category category);
 
     void deleteCategoryById(String categoryId);
+
+    List<Category> getTree();
 }

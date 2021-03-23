@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author: 张平平
  * @Date: 2021/3/22 17:46
@@ -64,5 +66,12 @@ public class CategoryController {
     public ResultData deleteCategoryById(@PathVariable("categoryId")String categoryId){
         categoryService.deleteCategoryById(categoryId);
         return ResultData.success("删除成功");
+    }
+    @Priv(login = true)
+    @PutMapping("/tree")
+    @ApiOperation(value = "分类树")
+    public ResultData getTree(){
+        List<Category> tree=categoryService.getTree();
+        return ResultData.success(tree);
     }
 }

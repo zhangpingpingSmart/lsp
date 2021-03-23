@@ -6,6 +6,9 @@ import com.zpp.lsp.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author: 张平平
  * @Date: 2021/3/22 18:10
@@ -34,5 +37,29 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void deleteCategoryById(String categoryId) {
         categoryMapper.deleteCategoryById(categoryId);
+    }
+
+    @Override
+    public List<Category> getTree() {
+        List<Category> categories = categoryMapper.selectList(null);
+        return buildTreeList(categories,0L);
+    }
+
+    /**
+     * 构建树
+     *
+     * @param menuList
+     * @param pid
+     * @return
+     */
+    private List<Category> buildTreeList(List<Category> menuList, Long pid) {
+        List<Category> treeList = new ArrayList<>();
+        menuList.forEach(category -> {
+            if (pid.equals(category.getParentId())) {
+                category.setChildCategorys(buildTreeList(menuList, category.getCategoryId()));
+                treeList.add(category);
+            }
+        });
+        return treeList;
     }
 }

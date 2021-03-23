@@ -8,6 +8,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: 张平平
@@ -28,7 +29,7 @@ public class Category {
     private String categoryName;
 
     @ApiModelProperty(value = "分类父id",name = "parentId",required = true)
-    private Integer parentId;
+    private Long parentId;
 
     @ApiModelProperty(value = "层级",name = "categoryLevel",required = true)
     private Integer categoryLevel;
@@ -57,4 +58,7 @@ public class Category {
     
     @ApiModelProperty(hidden = true)
     private Integer isDelete;
+
+    @ApiModelProperty(hidden = true)
+    List<Category> childCategorys;
 }

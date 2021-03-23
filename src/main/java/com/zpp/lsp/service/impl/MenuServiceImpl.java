@@ -60,7 +60,7 @@ public class MenuServiceImpl implements MenuService {
     private List<Menu> buildMenuTree(List<Menu> menuList, Long pid) {
         List<Menu> treeList = new ArrayList<>();
         menuList.forEach(menu -> {
-            if (pid.equals(menu.getMenuId())) {
+            if (pid.equals(menu.getParentId())) {
                 menu.setChildMenus(buildMenuTree(menuList, menu.getMenuId()));
                 treeList.add(menu);
             }
