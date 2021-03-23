@@ -86,9 +86,17 @@
             g.create_time,
             zs.store_name,
             zs.store_addr
+            gf.format_name,
+            gf.format_price,
+            gf.format_num,
+            gf.format_seq,
+            gf.platform_price,
+            gu.unit_name,
         from
             goods g
         left join zpp_store zs on zs.store_id=g.store_id
+        left join goods_format gf on gf.goods_id=g.goods_id and gf.format_status=0 and gf.is_delete=0
+        left join goods_unit gu on gu.unit_id=gf.unit_id
         where
             g.category_id=#{categoryId}
         and g.is_delete=0
