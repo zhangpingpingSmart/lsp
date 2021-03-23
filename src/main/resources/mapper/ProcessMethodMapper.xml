@@ -10,7 +10,7 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
-    <select id="" resultMap="processMethodMap" resultType="com.zpp.lsp.pojo.ProcessMethod">
+    <select id="getProcessMethodById" resultMap="processMethodMap" resultType="com.zpp.lsp.pojo.ProcessMethod">
         select
             method_id,
             method_name,
@@ -23,4 +23,8 @@
         and
         is_delete=0
     </select>
+
+    <update id="deleteProcessMethodById">
+        update process_method set is_delete=1 where method_id=#{methodId}
+    </update>
 </mapper>

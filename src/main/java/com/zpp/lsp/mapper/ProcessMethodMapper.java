@@ -8,4 +8,7 @@ import com.zpp.lsp.pojo.ProcessMethod;
  * @Date: 2021/3/22 16:15
  */
 public interface ProcessMethodMapper extends BaseMapper<ProcessMethod> {
+    ProcessMethod getProcessMethodById(String methodId);
+
+    void deleteProcessMethodById(String methodId);
 }
