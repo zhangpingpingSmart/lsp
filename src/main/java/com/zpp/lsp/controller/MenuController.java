@@ -27,7 +27,7 @@ public class MenuController {
 
 
     @Priv(login = true)
-    @PostMapping("/storeMenus/{storeId}")
+    @PostMapping("/tree/{storeId}")
     @ApiOperation(value = "根据商户id获取菜单信息")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "storeId",value = "商户id",required = true,paramType = "path",dataType = "String")
