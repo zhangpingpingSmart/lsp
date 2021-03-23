@@ -3,7 +3,7 @@
 
 <mapper namespace="com.zpp.lsp.mapper.UserMapper">
 
-    <resultMap id="userMap" type="User">
+    <resultMap id="userMap" type="com.zpp.lsp.pojo.User">
         <id property="userId" column="user_id"/>
         <result property="userName" column="user_name"/>
         <result property="password" column="password"/>

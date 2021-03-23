@@ -3,7 +3,7 @@
 
 <mapper namespace="com.zpp.lsp.mapper.GoodsFormatMpper">
 
-    <resultMap id="goodsFormatMap" type="GoodsFormat">
+    <resultMap id="goodsFormatMap" type="com.zpp.lsp.pojo.GoodsFormat">
         <id property="formatId" column="format_id"/>
         <result property="goodsId" column="goods_id"/>
         <result property="unitId" column="unit_id"/>

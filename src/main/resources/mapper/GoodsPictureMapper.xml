@@ -3,7 +3,7 @@
 
 <mapper namespace="com.zpp.lsp.mapper.GoodsPictureMapper">
 
-    <resultMap id="goodsPictureMap" type="GoodsPicture">
+    <resultMap id="goodsPictureMap" type="com.zpp.lsp.pojo.GoodsPicture">
         <id property="picId" column="pic_id"/>
         <result property="goodsId" column="goods_id"/>
         <result property="picUrl" column="pic_url"/>

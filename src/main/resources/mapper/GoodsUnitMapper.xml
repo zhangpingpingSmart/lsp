@@ -3,7 +3,7 @@
 
 <mapper namespace="com.zpp.lsp.mapper.GoodsUnitMapper">
 
-    <resultMap id="goodsUnitMap" type="GoodsUnit">
+    <resultMap id="goodsUnitMap" type="com.zpp.lsp.pojo.GoodsUnit">
         <id property="unitId" column="unit_id"/>
         <result property="unitName" column="unit_name"/>
         <result property="createTime" column="create_time"/>

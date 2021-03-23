@@ -3,7 +3,7 @@
 
 <mapper namespace="com.zpp.lsp.mapper.GoodsMapper">
 
-    <resultMap id="goodsMap" type="Goods">
+    <resultMap id="goodsMap" type="com.zpp.lsp.pojo.Goods">
         <id property="goodsId" column="goods_id"/>
         <result property="categoryId" column="category_id"/>
         <result property="goodsName" column="goods_name"/>

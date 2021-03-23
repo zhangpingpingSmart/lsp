@@ -3,7 +3,7 @@
 
 <mapper namespace="com.zpp.lsp.mapper.CategoryMapper">
 
-    <resultMap id="CategoryMap" type="Category">
+    <resultMap id="CategoryMap" type="com.zpp.lsp.pojo.Category">
         <id property="categoryId" column="category_id"/>
         <result  property="categoryCode" column="category_code"/>
         <result  property="categoryName" column="category_name"/>

@@ -3,7 +3,7 @@
 
 <mapper namespace="com.zpp.lsp.mapper.ProcessMethodMapper">
 
-    <resultMap id="processMethodMap" type="ProcessMethod">
+    <resultMap id="processMethodMap" type="com.zpp.lsp.pojo.ProcessMethod">
         <id property="methodId" column="method_id"/>
         <result property="methodName" column="method_name"/>
         <result property="methodStatus" column="method_status"/>

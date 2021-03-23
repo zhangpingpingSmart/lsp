@@ -3,7 +3,7 @@
 
 <mapper namespace="com.zpp.lsp.mapper.MenuMapper">
 
-    <resultMap id="menuMap" type="Menu">
+    <resultMap id="menuMap" type="com.zpp.lsp.pojo.Menu">
         <id property="menuId" column="menu_id"/>
         <result property="menuName" column="menu_name"/>
         <result property="parentId" column="parent_id"/>

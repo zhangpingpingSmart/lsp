@@ -3,7 +3,7 @@
 
 <mapper namespace="com.zpp.lsp.mapper.StoreMapper">
 
-    <resultMap id="storeMap" type="Store">
+    <resultMap id="storeMap" type="com.zpp.lsp.pojo.Store">
         <id property="storeId" column="store_id"/>
         <result property="storeName" column="store_name"/>
         <result property="storeAddr" column="store_addr"/>
