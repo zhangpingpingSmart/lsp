@@ -11,7 +11,7 @@
  Target Server Version : 50648
  File Encoding         : 65001
 
- Date: 22/03/2021 15:58:47
+ Date: 25/03/2021 17:47:00
 */
 
 SET NAMES utf8mb4;
@@ -155,6 +155,59 @@ CREATE TABLE `hibernate_sequence`  (
 INSERT INTO `hibernate_sequence` VALUES (1);
 
 -- ----------------------------
+-- Table structure for order_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `order_detail`;
+CREATE TABLE `order_detail`  (
+  `odetail_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单商品主键',
+  `order_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单编号',
+  `format_id` bigint(20) NULL DEFAULT NULL COMMENT '规格id',
+  `method_id` bigint(20) NULL DEFAULT NULL COMMENT '加工方式id',
+  `goods_num` int(11) NULL DEFAULT NULL COMMENT '商品数量',
+  `goods_price` decimal(12, 2) NULL DEFAULT NULL COMMENT '商品价格',
+  PRIMARY KEY (`odetail_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of order_detail
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for order_info
+-- ----------------------------
+DROP TABLE IF EXISTS `order_info`;
+CREATE TABLE `order_info`  (
+  `order_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单id',
+  `order_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单号',
+  `buyer_id` bigint(20) NULL DEFAULT NULL COMMENT '卖家id',
+  `address_id` bigint(20) NULL DEFAULT NULL COMMENT '地址id',
+  `order_status` int(11) NULL DEFAULT NULL COMMENT '订单状态：0进行中，1已完成，2取消交易',
+  `pay_status` int(11) NULL DEFAULT NULL COMMENT '支付状态：0未付款，1已付款，2线下付款，3线下付款已收款',
+  `order_amout` decimal(12, 2) NULL DEFAULT NULL COMMENT '订单金额',
+  `pay_amout` decimal(12, 2) NULL DEFAULT NULL COMMENT '支付金额',
+  `total_amout` decimal(12, 2) NULL DEFAULT NULL COMMENT '商品最终总金额',
+  `pay_time` datetime NULL DEFAULT NULL COMMENT '支付时间',
+  `pay_no` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '支付订单号',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `delivery_type` int(11) NULL DEFAULT NULL COMMENT '配送方式',
+  `delivery_status` int(11) NULL DEFAULT NULL COMMENT '配送状态：0未收货，1送货中，2已送货',
+  `seller_status` int(11) NULL DEFAULT NULL COMMENT '商家状态：0备货中，1备货完成，2缺货',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `buyer_status` int(11) NULL DEFAULT NULL COMMENT '卖家状态：0待收货，1已收货，2换货，3退货',
+  `delivery_money` decimal(12, 2) NULL DEFAULT NULL COMMENT '配送费',
+  `delivery_receive_time` datetime NULL DEFAULT NULL COMMENT '配送收货时间',
+  `delivery_finish_time` datetime NULL DEFAULT NULL COMMENT '配送完成时间',
+  `seller_finish_time` datetime NULL DEFAULT NULL COMMENT '卖家完成时间',
+  `buyer_finish_time` datetime NULL DEFAULT NULL COMMENT '买家完成时间',
+  `is_delete` int(11) NULL DEFAULT 0 COMMENT '是否删除：0未删除：1删除',
+  PRIMARY KEY (`order_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of order_info
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for process_method
 -- ----------------------------
 DROP TABLE IF EXISTS `process_method`;
@@ -169,6 +222,47 @@ CREATE TABLE `process_method`  (
 
 -- ----------------------------
 -- Records of process_method
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for shop_cart
+-- ----------------------------
+DROP TABLE IF EXISTS `shop_cart`;
+CREATE TABLE `shop_cart`  (
+  `cart_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '购物车id',
+  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
+  `format_id` bigint(20) NULL DEFAULT NULL COMMENT '规格id',
+  `goods_num` int(11) NULL DEFAULT NULL COMMENT '商品数量',
+  `store_id` bigint(20) NULL DEFAULT NULL COMMENT '商家id',
+  `is_selected` int(11) NULL DEFAULT NULL COMMENT '是否选择：1未选择，1选择',
+  `method_id` bigint(20) NULL DEFAULT NULL COMMENT '加工方式',
+  `create_time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`cart_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of shop_cart
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for user_address
+-- ----------------------------
+DROP TABLE IF EXISTS `user_address`;
+CREATE TABLE `user_address`  (
+  `address_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '地址id',
+  `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
+  `address_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '详细地址',
+  `province` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '省',
+  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '市',
+  `area` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '区',
+  `street` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '街道',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `is_delete` int(11) NULL DEFAULT NULL COMMENT '是否删除：0未删除，1删除',
+  PRIMARY KEY (`address_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of user_address
 -- ----------------------------
 
 -- ----------------------------
