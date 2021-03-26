@@ -11,7 +11,7 @@
  Target Server Version : 50648
  File Encoding         : 65001
 
- Date: 25/03/2021 17:47:00
+ Date: 26/03/2021 15:21:33
 */
 
 SET NAMES utf8mb4;
@@ -258,6 +258,7 @@ CREATE TABLE `user_address`  (
   `street` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '街道',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `is_delete` int(11) NULL DEFAULT NULL COMMENT '是否删除：0未删除，1删除',
+  `is_default` int(11) NULL DEFAULT 0 COMMENT '是否默认：0非默认，11默认',
   PRIMARY KEY (`address_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
 
