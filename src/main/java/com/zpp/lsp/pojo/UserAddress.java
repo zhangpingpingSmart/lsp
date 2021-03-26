@@ -43,5 +43,7 @@ public class UserAddress {
     @ApiModelProperty(hidden = true)
     private Integer isDelete;
 
+    @ApiModelProperty(value = "是否默认",name = "isDefault",required = true)
+    private Integer isDefault;
 
 }
