@@ -6,7 +6,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * @Author: 张平平
@@ -34,11 +33,5 @@ public class OrderDetail {
 
     @ApiModelProperty(value = "商品价格",name = "goodsPrice",required = true)
     private BigDecimal goodsPrice;
-
-    @ApiModelProperty(value = "支付时间",name = "payTime",required = true)
-    private Date payTime;
-
-    @ApiModelProperty(value = "支付订单号",name = "payNo",required = true)
-    private String payNo;
 
 }

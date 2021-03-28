@@ -49,6 +49,9 @@ public class OrderInfo {
     @ApiModelProperty(value = "支付时间",name = "payTime",required = true)
     private Date payTime;
 
+    @ApiModelProperty(value = "支付订单号",name = "payNo",required = true)
+    private String payNo;
+
     @ApiModelProperty(value = "创建时间",name = "createTime",required = true)
     private Date createTime;
 
