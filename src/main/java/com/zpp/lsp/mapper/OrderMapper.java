@@ -12,4 +12,8 @@ import java.util.List;
  */
 public interface OrderMapper extends BaseMapper<OrderInfo> {
     List<Order> getOrderList(OrderInfo orderInfo);
+
+    Order getOrderById(String orderId);
+
+    void deleteOrderById(String orderId);
 }

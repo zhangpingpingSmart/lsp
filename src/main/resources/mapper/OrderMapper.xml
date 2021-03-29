@@ -51,35 +51,21 @@
         <result property="deliveryFinishTime" column="delivery_finish_time"/>
         <result property="sellerFinishTime" column="seller_finish_time"/>
         <result property="buyerFinishTime" column="buyer_finish_time"/>
-        <collection property="goodsMakeList" ofType="com.zpp.lsp.pojo.make.GoodsMake">
-            <id property="goodsId" column="goods_id"/>
-            <result property="categoryId" column="category_id"/>
+        <collection property="orderDetailList" ofType="com.zpp.lsp.pojo.make.OrderDetailMake">
+            <id property="odetailId" column="odetailId"/>
+            <result property="orderNumber" column="order_number"/>
+            <result property="formatId" column="format_id"/>
+            <result property="formatName" column="format_name"/>
+            <result property="formatPrice" column="format_price"/>
+            <result property="unitName" column="unit_name"/>
+            <result property="methodId" column="method_id"/>
+            <result property="goodsNum" column="goods_num"/>
+            <result property="goodsPrice" column="goods_price"/>
+            <result property="picUrl" column="pic_url"/>
+            <result property="receiverName" column="receiver_name"/>
+            <result property="receiverPhone" column="receiver_phone"/>
+            <result property="addressName" column="address_name"/>
             <result property="goodsName" column="goods_name"/>
-            <result property="goodsAs" column="goods_as"/>
-            <result property="goodsLabel" column="goods_label"/>
-            <result property="goodsBrand" column="goods_brand"/>
-            <result property="goodsDesc" column="goods_desc"/>
-            <result property="goodsSeq" column="goods_seq"/>
-            <result property="goodsRemark" column="goods_remark"/>
-            <result property="createTime" column="create_time"/>
-            <result property="storeName" column="store_name"/>
-            <result property="storeAddr" column="store_addr"/>
-            <collection property="goodsFormatList" ofType="com.zpp.lsp.pojo.GoodsFormat">
-                <result property="formatName" column="format_name"/>
-                <result property="formaPrice" column="format_price"/>
-                <result property="formatNum" column="format_num"/>
-                <result property="formatSeq" column="format_seq"/>
-                <result property="unitName" column="unit_name"/>
-                <result property="platformPrice" column="platform_price"/>
-            </collection>
-            <collection property="goodsPictureList" ofType="com.zpp.lsp.pojo.GoodsPicture">
-                <result property="picUrl" column="pic_url"/>
-                <result property="picSeq" column="pic_seq"/>
-                <result property="isMain" column="is_main"/>
-            </collection>
-            <collection property="processMethodList" column="com.zpp.lsp.pojo.ProcessMethod">
-                <result property="methodName" column="method_name"/>
-            </collection>
         </collection>
     </resultMap>
 
@@ -105,6 +91,48 @@
         </if>
     </select>
 
+    <select id="getOrderById" resultMap="orderMap">
+        select
+            oi.order_id,
+            oi.order_number,
+            oi.buyer_id,
+            oi.address_id,
+            oi.order_status,
+            oi.pay_status,
+            oi.order_amout,
+            oi.pay_amout,
+            oi.total_amout,
+            oi.pay_time,
+            oi.pay_no,
+            oi.create_time,
+            oi.delivery_type,
+            oi.delivery_status,
+            oi.seller_status,
+            oi.remark,
+            oi.buyer_status,
+            oi.delivery_money,
+            oi.delivery_receive_time,
+            oi.delivery_finish_time,
+            oi.seller_finish_time,
+            oi.buyer_finish_time
+            od.goods_num,
+            od.goods_price,
+            od.format_id,
+            gf.format_name,
+            gf.format_price,
+            gu.unit_name,
+            gp.pic_url,
+            ua.address_name,
+            ua.receiver_name,
+            ua.receiver_phone
+        from order_info oi
+        left join order_detail od on oi.order_number=od.order_number
+        left join goods_format gf on od.format_id=gf.format_id
+        left join goods_unit gu on gu.unit_id=gf.unit_id
+        left join goods_picture gp on gf.goods_id=gp.goods_id and gp.is_main=1
+        left join user_address ua on ua.address_id=oi.address_id
+    where oi.order_id=#{orderId}
+    </select>
 
     <update id="deleteOrderById">
         update order_info set is_delete=1 where order_id=#{orderId}

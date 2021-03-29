@@ -23,4 +23,14 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getOrderList(OrderInfo orderInfo) {
         return orderMapper.getOrderList(orderInfo);
     }
+
+    @Override
+    public Order getOrderById(String orderId) {
+        return orderMapper.getOrderById(orderId);
+    }
+
+    @Override
+    public void deleteOrderById(String orderId) {
+        orderMapper.deleteOrderById(orderId);
+    }
 }

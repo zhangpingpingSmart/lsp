@@ -40,4 +40,25 @@ public class OrderController {
         return ResultData.success(list);
     }
 
+    @Priv(login = true)
+    @PostMapping("/{orderId}")
+    @ApiOperation(value = "根据订单id获取订单信息",httpMethod = "POST")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "orderId",value = "订单id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData getOrderById(@PathVariable("orderId") String orderId){
+        Order goods=orderService.getOrderById(orderId);
+        return ResultData.success(goods);
+    }
+
+    @Priv(login = true)
+    @DeleteMapping("/del/{orderId}")
+    @ApiOperation(value = "根据id删除订单")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "orderId",value = "订单id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData deleteOrderById(@PathVariable("orderId")String orderId){
+        orderService.deleteOrderById(orderId);
+        return ResultData.success("删除成功");
+    }
 }
