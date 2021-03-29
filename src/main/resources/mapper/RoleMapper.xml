@@ -12,7 +12,7 @@
     </resultMap>
 
     <!-- 查找角色信息 -->
-    <select id="getRolesByStoreId" resultMap="roleMap" resultType="com.zpp.lsp.pojo.Role">
+    <select id="getRolesByStoreId" resultMap="roleMap">
        SELECT
            zr.role_id,
            zr.parent_role_id,

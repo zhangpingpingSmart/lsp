@@ -83,7 +83,7 @@
         </collection>
     </resultMap>
 
-    <select id="getOrderList" resultMap="orderMap" resultType="com.zpp.lsp.pojo.make.Order">
+    <select id="getOrderList" resultMap="orderMap">
         select
             oi.order_id,
             oi.order_number,
@@ -100,6 +100,9 @@
             oi.buyer_id={userId}
         and
         oi.is_delete=0
+        <if test="orderStatus!=''">
+            and order_status=#{orderStatus}
+        </if>
     </select>
 
 

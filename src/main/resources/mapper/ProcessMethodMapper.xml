@@ -10,7 +10,7 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
-    <select id="getProcessMethodById" resultMap="processMethodMap" resultType="com.zpp.lsp.pojo.ProcessMethod">
+    <select id="getProcessMethodById" resultMap="processMethodMap">
         select
             method_id,
             method_name,

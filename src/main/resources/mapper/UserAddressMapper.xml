@@ -8,7 +8,7 @@
         <result property="" column=""/>
     </resultMap>
 
-    <select id="getUserAddressById" resultMap="userMap" resultType="com.zpp.lsp.pojo.User">
+    <select id="getUserAddressById" resultMap="userMap">
         select
             address_id,
             user_id,

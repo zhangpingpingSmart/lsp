@@ -17,7 +17,7 @@
     </resultMap>
 
     <!-- 查找用户信息 -->
-    <select id="getUserByUserNameAndPassword" resultMap="userMap" resultType="com.zpp.lsp.pojo.User">
+    <select id="getUserByUserNameAndPassword" resultMap="userMap">
        select
             user_id,
             user_name,
@@ -37,7 +37,7 @@
             password=#{password}
     </select>
 
-    <select id="getUserByUserId" resultMap="userMap" resultType="com.zpp.lsp.pojo.User">
+    <select id="getUserByUserId" resultMap="userMap">
         select
             user_id,
             user_name,

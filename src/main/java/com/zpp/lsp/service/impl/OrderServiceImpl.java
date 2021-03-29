@@ -1,6 +1,7 @@
 package com.zpp.lsp.service.impl;
 
 import com.zpp.lsp.mapper.OrderMapper;
+import com.zpp.lsp.pojo.OrderInfo;
 import com.zpp.lsp.pojo.make.Order;
 import com.zpp.lsp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderMapper orderMapper;
 
     @Override
-    public List<Order> getOrderList(String userId) {
-        return orderMapper.getOrderList(userId);
+    public List<Order> getOrderList(OrderInfo orderInfo) {
+        return orderMapper.getOrderList(orderInfo);
     }
 }

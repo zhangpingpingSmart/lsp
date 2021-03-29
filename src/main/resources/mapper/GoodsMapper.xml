@@ -50,7 +50,7 @@
         </collection>
     </resultMap>
 
-    <select id="getGoodsByGoodsId" resultMap="goodsMap" resultType="com.zpp.lsp.pojo.Goods">
+    <select id="getGoodsByGoodsId" resultMap="goodsMap">
         select
             goods_id,
             category_id,

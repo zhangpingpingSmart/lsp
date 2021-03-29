@@ -9,7 +9,7 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
-    <select id="getGoodsUnitById" resultMap="goodsUnitMap" resultType="com.zpp.lsp.pojo.GoodsUnit">
+    <select id="getGoodsUnitById" resultMap="goodsUnitMap">
         select
             unit_id,
             unit_name,

@@ -16,7 +16,7 @@
         <result property="platformPrice" column="platform_price"/>
     </resultMap>
 
-    <select id="getGoodsByGoodsFormatId" resultMap="goodsFormatMap" resultType="com.zpp.lsp.pojo.GoodsFormat">
+    <select id="getGoodsByGoodsFormatId" resultMap="goodsFormatMap">
         select
             format_id,
             goods_id,

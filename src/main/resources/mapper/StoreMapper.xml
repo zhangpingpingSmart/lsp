@@ -16,7 +16,7 @@
     </resultMap>
 
     <!-- 根据角色id查找用户信息 -->
-    <select id="getStoresByRoleId" resultMap="storeMap" resultType="com.zpp.lsp.pojo.Store">
+    <select id="getStoresByRoleId" resultMap="storeMap">
        SELECT
             zs.store_id,
             zs.store_name,

@@ -1,5 +1,6 @@
 package com.zpp.lsp.service;
 
+import com.zpp.lsp.pojo.OrderInfo;
 import com.zpp.lsp.pojo.make.Order;
 
 import java.util.List;
@@ -9,5 +10,5 @@ import java.util.List;
  * @Date: 2021/3/29 10:47
  */
 public interface OrderService {
-    List<Order> getOrderList(String userId);
+    List<Order> getOrderList(OrderInfo orderInfo);
 }

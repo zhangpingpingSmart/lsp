@@ -17,7 +17,7 @@
     </resultMap>
 
     <!-- 查找用户信息 -->
-    <select id="getMenusByRoleId" resultMap="menuMap" resultType="com.zpp.lsp.pojo.Menu">
+    <select id="getMenusByRoleId" resultMap="menuMap">
         SELECT
         zm.menu_id,
         zm.menu_name,
@@ -41,7 +41,7 @@
         zm.is_delete=0
         order by zm.menu_id desc
     </select>
-    <select id="getMenuById" resultMap="menuMap" resultType="com.zpp.lsp.pojo.Menu">
+    <select id="getMenuById" resultMap="menuMap">
         select
             menu_id,
             menu_name,
