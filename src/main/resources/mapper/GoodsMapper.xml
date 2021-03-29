@@ -95,7 +95,7 @@
         from
             goods g
         left join zpp_store zs on zs.store_id=g.store_id
-        left join goods_format gf on gf.goods_id=g.goods_id and gf.format_status=0 and gf.is_delete=0
+        left join goods_format gf on gf.goods_id=g.goods_id
         left join goods_unit gu on gu.unit_id=gf.unit_id
         where
             g.category_id=#{categoryId}
@@ -130,11 +130,11 @@
         from
             goods g
         left join zpp_store zs on zs.store_id=g.store_id
-        left join goods_format gf on gf.goods_id=g.goods_id and gf.format_status=0 and gf.is_delete=0
+        left join goods_format gf on gf.goods_id=g.goods_id
         left join goods_unit gu on gu.unit_id=gf.unit_id
-        left join goods_picture gp on gp.goods_id=g.goods_id and gp.is_delete=0
+        left join goods_picture gp on gp.goods_id=g.goods_id
         left join goods_method gm on gm.goods_id=g.goods_id
-        left join process_method pm on pm.method_id=gm.method_id and pm.is_delete=0 and pm.method_status=0
+        left join process_method pm on pm.method_id=gm.method_id
         where
             g.goods_id=#{goodsId}
         and g.is_delete=0

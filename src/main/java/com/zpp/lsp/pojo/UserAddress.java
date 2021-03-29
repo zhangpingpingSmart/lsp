@@ -46,4 +46,9 @@ public class UserAddress {
     @ApiModelProperty(value = "是否默认",name = "isDefault",required = true)
     private Integer isDefault;
 
+    @ApiModelProperty(value = "收货人",name = "receiverName",required = true)
+    private Integer receiverName;
+
+    @ApiModelProperty(value = "收货人手机号",name = "receiverphone",required = true)
+    private Integer receiverphone;
 }

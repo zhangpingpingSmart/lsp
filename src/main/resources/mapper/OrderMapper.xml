@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpp.lsp.mapper.OrderMapper">
+
+    <resultMap id="orderInfoMap" type="com.zpp.lsp.pojo.OrderInfo">
+        <id property="orderId" column="order_id"/>
+        <result property="orderNumber" column="order_number"/>
+        <result property="buyerId" column="buyer_id"/>
+        <result property="addressId" column="address_id"/>
+        <result property="orderStatus" column="order_status"/>
+        <result property="payStatus" column="pay_status"/>
+        <result property="orderAmout" column="order_amout"/>
+        <result property="payAmout" column="pay_amout"/>
+        <result property="totalAmout" column="total_amout"/>
+        <result property="payTime" column="pay_time"/>
+        <result property="payNo" column="pay_no"/>
+        <result property="createTime" column="create_time"/>
+        <result property="deliveryType" column="delivery_type"/>
+        <result property="deliveryStatus" column="delivery_status"/>
+        <result property="sellerStatus" column="seller_status"/>
+        <result property="remark" column="remark"/>
+        <result property="buyerStatus" column="buyer_status"/>
+        <result property="deliveryMoney" column="delivery_money"/>
+        <result property="deliveryReceiveTime" column="delivery_receive_time"/>
+        <result property="deliveryFinishTime" column="delivery_finish_time"/>
+        <result property="sellerFinishTime" column="seller_finish_time"/>
+        <result property="buyerFinishTime" column="buyer_finish_time"/>
+    </resultMap>
+
+    <resultMap id="orderMap" type="com.zpp.lsp.pojo.make.Order">
+        <id property="orderId" column="order_id"/>
+        <result property="orderNumber" column="order_number"/>
+        <result property="buyerId" column="buyer_id"/>
+        <result property="addressId" column="address_id"/>
+        <result property="orderStatus" column="order_status"/>
+        <result property="payStatus" column="pay_status"/>
+        <result property="orderAmout" column="order_amout"/>
+        <result property="payAmout" column="pay_amout"/>
+        <result property="totalAmout" column="total_amout"/>
+        <result property="payTime" column="pay_time"/>
+        <result property="payNo" column="pay_no"/>
+        <result property="createTime" column="create_time"/>
+        <result property="deliveryType" column="delivery_type"/>
+        <result property="deliveryStatus" column="delivery_status"/>
+        <result property="sellerStatus" column="seller_status"/>
+        <result property="remark" column="remark"/>
+        <result property="buyerStatus" column="buyer_status"/>
+        <result property="deliveryMoney" column="delivery_money"/>
+        <result property="deliveryReceiveTime" column="delivery_receive_time"/>
+        <result property="deliveryFinishTime" column="delivery_finish_time"/>
+        <result property="sellerFinishTime" column="seller_finish_time"/>
+        <result property="buyerFinishTime" column="buyer_finish_time"/>
+        <collection property="goodsMakeList" ofType="com.zpp.lsp.pojo.make.GoodsMake">
+            <id property="goodsId" column="goods_id"/>
+            <result property="categoryId" column="category_id"/>
+            <result property="goodsName" column="goods_name"/>
+            <result property="goodsAs" column="goods_as"/>
+            <result property="goodsLabel" column="goods_label"/>
+            <result property="goodsBrand" column="goods_brand"/>
+            <result property="goodsDesc" column="goods_desc"/>
+            <result property="goodsSeq" column="goods_seq"/>
+            <result property="goodsRemark" column="goods_remark"/>
+            <result property="createTime" column="create_time"/>
+            <result property="storeName" column="store_name"/>
+            <result property="storeAddr" column="store_addr"/>
+            <collection property="goodsFormatList" ofType="com.zpp.lsp.pojo.GoodsFormat">
+                <result property="formatName" column="format_name"/>
+                <result property="formaPrice" column="format_price"/>
+                <result property="formatNum" column="format_num"/>
+                <result property="formatSeq" column="format_seq"/>
+                <result property="unitName" column="unit_name"/>
+                <result property="platformPrice" column="platform_price"/>
+            </collection>
+            <collection property="goodsPictureList" ofType="com.zpp.lsp.pojo.GoodsPicture">
+                <result property="picUrl" column="pic_url"/>
+                <result property="picSeq" column="pic_seq"/>
+                <result property="isMain" column="is_main"/>
+            </collection>
+            <collection property="processMethodList" column="com.zpp.lsp.pojo.ProcessMethod">
+                <result property="methodName" column="method_name"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="getOrderList" resultMap="orderMap" resultType="com.zpp.lsp.pojo.make.Order">
+        select
+            oi.order_id,
+            oi.order_number,
+            oi.create_time,
+            oi.order_number,
+            oi.order_status,
+            oi.pay_amout,
+            gp.pic_url
+        from order_info oi
+        left join order_detail od on oi.order_number=od.order_number
+        left join goods_format gf on od.format_id=gf.format_id
+        left join goods_picture gp on gf.goods_id=gp.goods_id and gp.is_main=1
+        where
+            oi.buyer_id={userId}
+        and
+        oi.is_delete=0
+    </select>
+
+
+    <update id="deleteOrderById">
+        update order_info set is_delete=1 where order_id=#{orderId}
+    </update>
+</mapper>
