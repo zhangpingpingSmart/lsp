@@ -100,7 +100,7 @@
             oi.buyer_id={userId}
         and
         oi.is_delete=0
-        <if test="orderStatus!=''||orderStatus!=null">
+        <if test="orderStatus!='' and orderStatus!=null">
             and order_status=#{orderStatus}
         </if>
     </select>
