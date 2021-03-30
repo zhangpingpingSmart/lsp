@@ -22,13 +22,14 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    //用户-会员  商家-角色
+    @Priv(login = true)
+    @DeleteMapping("/list")
+    @ApiOperation(value = "角色列表")
+    public ResultData getRoleList(){
+        List<Role> list=roleService.getRoleList();
+        return ResultData.success(list);
+    }
 
-    /**
-     * 根据商家查角色
-     * @param storeId
-     * @return
-     */
     @Priv(login = true)
     @PostMapping("/storeRoles/{storeId}")
     @ApiOperation(value = "根据商户id获取角色")
@@ -82,6 +83,5 @@ public class RoleController {
         roleService.deleteRoleById(roleId);
         return ResultData.success("删除成功");
     }
-
 
 }

@@ -6,6 +6,8 @@ import com.zpp.lsp.service.ShopCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author: 张平平
  * @Date: 2021/3/24 11:13
@@ -34,5 +36,10 @@ public class ShopCartServiceImpl implements ShopCartService {
     @Override
     public void deleteShopCartById(String cartId) {
         shopCartMapper.deleteById(cartId);
+    }
+
+    @Override
+    public List<ShopCart> getListByUserId(String userId) {
+        return shopCartMapper.getListByUserId(userId);
     }
 }

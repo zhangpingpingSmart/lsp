@@ -5,6 +5,8 @@ import com.zpp.lsp.pojo.UserAddress;
 import com.zpp.lsp.service.UserAddressService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author: 张平平
  * @Date: 2021/3/26 14:28
@@ -31,5 +33,10 @@ public class UserAddressServiceImpl implements UserAddressService {
     @Override
     public void deleteUserAddressById(String addressId) {
         userAddressMapper.deleteUserAddressById(addressId);
+    }
+
+    @Override
+    public List<UserAddress> getAddressList(String userId) {
+        return userAddressMapper.getAddressList(userId);
     }
 }

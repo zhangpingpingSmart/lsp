@@ -52,4 +52,9 @@ public class StoreServiceImpl implements StoreService {
     public void deleteStoreById(String storeId) {
         storeMapper.deleteStoreById(storeId);
     }
+
+    @Override
+    public List<Store> getStroeList() {
+        return storeMapper.selectList(null);
+    }
 }

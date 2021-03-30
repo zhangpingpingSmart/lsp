@@ -20,4 +20,6 @@ public interface RoleService {
     void saveRole(Role role);
     void updateRoleById(Role role);
     void deleteRoleById(String roleId);
+
+    List<Role> getRoleList();
 }

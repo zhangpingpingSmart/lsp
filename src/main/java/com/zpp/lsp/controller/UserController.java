@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author: 张平平
  * @Date: 2021/3/10 11:34
@@ -21,6 +23,14 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Priv(login = true)
+    @DeleteMapping("/list")
+    @ApiOperation(value = "用户列表")
+    public ResultData getUserList(){
+        List<User> list=userService.getUserList();
+        return ResultData.success(list);
+    }
 
     @Priv(login = true)
     @PostMapping("/{userId}")

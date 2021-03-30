@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author: 张平平
  * @Date: 2021/3/24 10:48
@@ -21,6 +23,17 @@ import org.springframework.web.bind.annotation.*;
 public class ShopCartController {
     @Autowired
     private ShopCartService shopCartService;
+
+    @Priv(login = true)
+    @PostMapping("/listBy/{userId}")
+    @ApiOperation(value = "根据用户id获取购物车列表",httpMethod = "POST")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "userId",value = "用户id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData getListByUserId(@PathVariable("userId") String userId){
+        List<ShopCart> list=shopCartService.getListByUserId(userId);
+        return ResultData.success(list);
+    }
 
     @Priv(login = true)
     @PostMapping("/{cartId}")
@@ -64,4 +77,5 @@ public class ShopCartController {
         shopCartService.deleteShopCartById(cartId);
         return ResultData.success("删除成功");
     }
+
 }

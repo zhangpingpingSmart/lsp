@@ -6,6 +6,8 @@ import com.zpp.lsp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author: 张平平
  * @Date: 2021/3/10 11:35
@@ -46,5 +48,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(String userId) {
         userMapper.deleteUserById(userId);
+    }
+
+    @Override
+    public List<User> getUserList() {
+        return userMapper.selectList(null);
     }
 }

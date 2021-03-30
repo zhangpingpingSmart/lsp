@@ -4,11 +4,20 @@
 <mapper namespace="com.zpp.lsp.mapper.UserAddressMapper">
 
     <resultMap id="userAddressMap" type="com.zpp.lsp.pojo.UserAddress">
-        <id property="" column=""/>
-        <result property="" column=""/>
+        <id property="addressId" column="address_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="addressName" column="address_name"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="area" column="area"/>
+        <result property="street" column="street"/>
+        <result property="createTime" column="create_time"/>
+        <result property="isDefault" column="is_default"/>
+        <result property="receiverName" column="receiver_name"/>
+        <result property="receiverPhone" column="receiver_phone"/>
     </resultMap>
 
-    <select id="getUserAddressById" resultMap="userMap">
+    <select id="getUserAddressById" resultMap="userAddressMap">
         select
             address_id,
             user_id,
@@ -17,11 +26,35 @@
             city,
             area,
             street,
-            create_time
+            create_time,
+            is_default,
+            receiver_name,
+            receiver_phone
         from
             user_address
         where
             address_id=#{addressId}
+        and
+            is_delete=0
+    </select>
+
+    <select id="getAddressList" resultMap="userAddressMap">
+        select
+            address_id,
+            user_id,
+            address_name,
+            province,
+            city,
+            area,
+            street,
+            create_time,
+            is_default,
+            receiver_name,
+            receiver_phone
+        from
+            user_address
+        where
+            user_id=#{userId}
         and
             is_delete=0
     </select>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpp.lsp.mapper.ShopCartMapper">
+
+    <resultMap id="shopCartMap" type="com.zpp.lsp.pojo.ShopCart">
+        <id property="cart_id" column="cart_id"/>
+        <result property="user_id" column="user_id"/>
+        <result property="format_id" column="format_id"/>
+        <result property="goods_num" column="goods_num"/>
+        <result property="store_id" column="store_id"/>
+        <result property="is_selected" column="is_selected"/>
+        <result property="method_id" column="method_id"/>
+        <result property="create_time" column="create_time"/>
+    </resultMap>
+
+    <select id="getListByUserId" resultMap="shopCartMap">
+        select
+            cart_id,
+            user_id,
+            format_id,
+            goods_num,
+            store_id,
+            is_selected,
+            method_id,
+            create_time
+        from
+            shop_cart
+        where user_id=#{userId}
+    </select>
+
+</mapper>

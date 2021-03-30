@@ -28,7 +28,7 @@ public class GoodsController {
     private GoodsService goodsService;
 
     @Priv(login = true)
-    @PostMapping("/{storeId}")
+    @PostMapping("/listBy/{storeId}")
     @ApiOperation(value = "根据商户id获取商品列表",httpMethod = "POST")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "storeId",value = "商户id",required = true,paramType = "path",dataType = "String")

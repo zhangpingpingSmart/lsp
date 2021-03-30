@@ -23,4 +23,7 @@ public interface StoreService {
     void updateStoreById(Store store);
 
     void deleteStoreById(String storeId);
+
+    List<Store> getStroeList();
+
 }

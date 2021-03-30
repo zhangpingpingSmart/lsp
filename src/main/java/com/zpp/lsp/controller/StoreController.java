@@ -26,6 +26,14 @@ public class StoreController {
     private StoreService storeService;
 
     @Priv(login = true)
+    @DeleteMapping("/list")
+    @ApiOperation(value = "商家列表")
+    public ResultData getStroeList(){
+        List<Store> list=storeService.getStroeList();
+        return ResultData.success(list);
+    }
+
+    @Priv(login = true)
     @PostMapping("/{storeId}")
     @ApiOperation(value = "根据商户id获取商户信息",httpMethod = "POST")
     @ApiImplicitParams(value = {

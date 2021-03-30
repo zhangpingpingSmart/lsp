@@ -12,6 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author: 张平平
  * @Date: 2021/3/26 14:23
@@ -23,6 +25,17 @@ public class UserAddressController {
 
     @Autowired
     private UserAddressService userAddressService;
+
+    @Priv(login = true)
+    @DeleteMapping("/listBy/{userId}")
+    @ApiOperation(value = "收货地址列表")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "userId",value = "用户id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData getAddressList(@PathVariable("userId")String userId){
+        List<UserAddress> list=userAddressService.getAddressList(userId);
+        return ResultData.success(list);
+    }
 
     @Priv(login = true)
     @PostMapping("/{addressId}")
