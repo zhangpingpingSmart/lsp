@@ -138,8 +138,46 @@
         where
             g.goods_id=#{goodsId}
         and g.is_delete=0
-        and g.goods_status=0
     </select>
+
+    <select id="getGoodsList" resultMap="GoodsDetailMap" >
+        select
+            g.goods_id,
+            g.goods_name,
+            g.category_id,
+            g.goods_as,
+            g.goods_label,
+            g.goods_brand,
+            g.goods_desc,
+            g.goods_seq,
+            g.goods_remark,
+            g.create_time,
+            zs.store_name,
+            zs.store_addr,
+            gf.format_name,
+            gf.format_price,
+            gf.format_num,
+            gf.format_seq,
+            gf.platform_price,
+            gu.unit_name,
+            gp.pic_url,
+            gp.pic_seq,
+            gp.is_main,
+            pm.method_name
+        from
+            goods g
+        left join zpp_store zs on zs.store_id=g.store_id
+        left join goods_format gf on gf.goods_id=g.goods_id
+        left join goods_unit gu on gu.unit_id=gf.unit_id
+        left join goods_picture gp on gp.goods_id=g.goods_id
+        left join goods_method gm on gm.goods_id=g.goods_id
+        left join process_method pm on pm.method_id=gm.method_id
+        where g.is_delete=0
+        <if test="storeId!='' and storeId!=null">
+            and g.store_id=#{storeId}
+        </if>
+    </select>
+
     <update id="deleteGoodsById">
         update goods set is_delete=1 where goods_id=#{goodsId}
     </update>

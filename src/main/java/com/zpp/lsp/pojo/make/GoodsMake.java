@@ -3,6 +3,7 @@ package com.zpp.lsp.pojo.make;
 import com.zpp.lsp.pojo.GoodsFormat;
 import com.zpp.lsp.pojo.GoodsPicture;
 import com.zpp.lsp.pojo.ProcessMethod;
+import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
@@ -12,10 +13,11 @@ import java.util.List;
  * @Date: 2021/3/23 15:14
  * 商品信息组合实体
  */
+@Data
 public class GoodsMake {
     private Long goodsId;
     private String goodsName;
-    private Long categoryId;
+    private Integer categoryId;
     private String goodsAs;
     private String goodsLabel;
     private String goodsBrand;

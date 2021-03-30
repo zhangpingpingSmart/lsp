@@ -1,7 +1,7 @@
 package com.zpp.lsp.service.impl;
 
-import com.zpp.lsp.mapper.GoodsMapper;
-import com.zpp.lsp.pojo.Goods;
+import com.zpp.lsp.mapper.*;
+import com.zpp.lsp.pojo.*;
 import com.zpp.lsp.pojo.make.GoodsMake;
 import com.zpp.lsp.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,14 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private GoodsMapper goodsMapper;
+    @Autowired
+    private GoodsFormatMpper goodsFormatMpper;
+    @Autowired
+    private GoodsPictureMapper goodsPictureMapper;
+    @Autowired
+    private ProcessMethodMapper processMethodMapper;
+    @Autowired
+    private GoodsMethodMapper goodsMethodMapper;
 
     @Override
     public Goods getGoodsByGoodsId(String goodsId) {
@@ -26,8 +34,36 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public void saveGoods(Goods goods) {
+    public void saveGoods(GoodsMake goodsMake) {
+        Goods goods=new Goods();
+        goods.setGoodsName(goodsMake.getGoodsName());
+        goods.setCategoryId(goodsMake.getCategoryId());
+        goods.setGoodsAs(goodsMake.getGoodsAs());
+        goods.setGoodsLabel(goodsMake.getGoodsLabel());
+        goods.setGoodsBrand(goodsMake.getGoodsBrand());
+        goods.setGoodsDesc(goodsMake.getGoodsDesc());
+        goods.setGoodsSeq(goodsMake.getGoodsSeq());
+        goods.setGoodsRemark(goodsMake.getGoodsRremark());
         goodsMapper.insert(goods);
+
+        for (GoodsFormat goodsFormat : goodsMake.getGoodsFormatList()) {
+            goodsFormat.setGoodsId(goodsMake.getGoodsId());
+            goodsFormatMpper.insert(goodsFormat);
+        }
+        for (GoodsPicture goodsPicture : goodsMake.getGoodsPictureList()) {
+            goodsPicture.setGoodsId(goodsMake.getGoodsId());
+            goodsPictureMapper.insert(goodsPicture);
+        }
+        //保存加工方式
+        for (ProcessMethod processMethod : goodsMake.getProcessMethodList()) {
+            processMethodMapper.insert(processMethod);
+            //中间表增删改查
+            GoodsMethod goodsMethod=new GoodsMethod();
+            goodsMethod.setGoodsId(goodsMake.getGoodsId());
+            goodsMethod.setMethodId(processMethod.getMethodId());
+            goodsMethodMapper.insert(goodsMethod);
+        }
+
     }
 
     @Override
@@ -49,5 +85,10 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public GoodsMake getGoodsDetailById(String goodsId) {
         return goodsMapper.getGoodsDetailById(goodsId);
+    }
+
+    @Override
+    public List<Goods> getGoodsList(String storeId) {
+        return goodsMapper.getGoodsList(storeId);
     }
 }

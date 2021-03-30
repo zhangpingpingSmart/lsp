@@ -13,7 +13,7 @@ import java.util.Map;
 public interface GoodsService {
     Goods getGoodsByGoodsId(String goodsId);
 
-    void saveGoods(Goods goods);
+    void saveGoods(GoodsMake goodsMake);
 
     void updateGoodsById(Goods goods);
 
@@ -22,4 +22,6 @@ public interface GoodsService {
     List<Map> getGoodsByCategoryId(String categoryId);
 
     GoodsMake getGoodsDetailById(String goodsId);
+
+    List<Goods> getGoodsList(String storeId);
 }

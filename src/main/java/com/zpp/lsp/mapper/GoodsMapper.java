@@ -20,4 +20,6 @@ public interface GoodsMapper extends BaseMapper<Goods> {
     List<Map> getGoodsByCategoryId(String categoryId);
 
     GoodsMake getGoodsDetailById(String goodsId);
+
+    List<Goods> getGoodsList(String storeId);
 }

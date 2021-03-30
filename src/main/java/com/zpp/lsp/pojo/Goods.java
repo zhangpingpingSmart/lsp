@@ -31,13 +31,13 @@ public class Goods {
     private String goodsAs;
 
     @ApiModelProperty(value = "商品标签",name = "goods_label",required = true)
-    private String goods_label;
+    private String goodsLabel;
 
     @ApiModelProperty(value = "商品品牌",name = "categorySeq",required = true)
-    private String goods_brand;
+    private String goodsBrand;
 
     @ApiModelProperty(value = "商品详情",name = "goods_desc")
-    private String goods_desc;
+    private String goodsDesc;
 
     @ApiModelProperty(value = "商家id",name = "storeId",required = true)
     private Long storeId;

@@ -28,6 +28,17 @@ public class GoodsController {
     private GoodsService goodsService;
 
     @Priv(login = true)
+    @PostMapping("/{storeId}")
+    @ApiOperation(value = "根据商户id获取商品列表",httpMethod = "POST")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "storeId",value = "商户id",required = true,paramType = "path",dataType = "String")
+    })
+    public ResultData getGoodsList(@PathVariable("storeId") String storeId){
+        List<Goods> list=goodsService.getGoodsList(storeId);
+        return ResultData.success(list);
+    }
+
+    @Priv(login = true)
     @PostMapping("/{goodsId}")
     @ApiOperation(value = "根据商品id获取商品信息",httpMethod = "POST")
     @ApiImplicitParams(value = {
@@ -42,10 +53,10 @@ public class GoodsController {
     @PostMapping("/add")
     @ApiOperation(value = "新增商品")
     @ApiImplicitParams(value = {
-            @ApiImplicitParam(name = "goods", value = "商品表单", required = true, dataType = "Goods")
+            @ApiImplicitParam(name = "goodsMake", value = "商品表单", required = true, dataType = "GoodsMake")
     })
-    public ResultData addGoods(@RequestBody Goods goods){
-        goodsService.saveGoods(goods);
+    public ResultData addGoods(@RequestBody GoodsMake goodsMake){
+        goodsService.saveGoods(goodsMake);
         return ResultData.success("新增成功");
     }
 
