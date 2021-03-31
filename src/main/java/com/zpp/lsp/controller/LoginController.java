@@ -50,7 +50,7 @@ public class LoginController {
             redisTemplate.expire(RedisKeyConfig.LOGIN_TOKEN+token,1800, TimeUnit.SECONDS);
             JSONObject jo =new JSONObject();
             jo.put("token",token);
-            jo.put("user",user);
+            jo.put("user",u);
             return ResultData.success("登录成功！", jo);
         }
         return ResultData.failure("用户名或密码错误！");
@@ -72,7 +72,7 @@ public class LoginController {
             redisTemplate.expire(RedisKeyConfig.LOGIN_TOKEN+token,1800, TimeUnit.SECONDS);
             JSONObject jo =new JSONObject();
             jo.put("token",token);
-            jo.put("store",store);
+            jo.put("store",u);
             return ResultData.success("登录成功！", jo);
         }
         return ResultData.failure("用户名或密码错误！");
