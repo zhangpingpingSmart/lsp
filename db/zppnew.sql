@@ -11,7 +11,7 @@
  Target Server Version : 50648
  File Encoding         : 65001
 
- Date: 26/03/2021 15:21:33
+ Date: 01/04/2021 13:50:30
 */
 
 SET NAMES utf8mb4;
@@ -115,7 +115,7 @@ CREATE TABLE `goods_picture`  (
   `goods_id` bigint(20) NULL DEFAULT NULL COMMENT '商品id',
   `pic_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '图片url',
   `pic_seq` int(11) NULL DEFAULT NULL COMMENT '顺序号',
-  `is_main` int(11) NULL DEFAULT NULL COMMENT '是否主图',
+  `is_main` int(11) NULL DEFAULT 0 COMMENT '是否主图：0不是，1是',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
   `is_delete` int(11) NULL DEFAULT 0 COMMENT '是否删除：0未删除，1删除',
@@ -179,7 +179,7 @@ DROP TABLE IF EXISTS `order_info`;
 CREATE TABLE `order_info`  (
   `order_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单id',
   `order_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单号',
-  `buyer_id` bigint(20) NULL DEFAULT NULL COMMENT '卖家id',
+  `buyer_id` bigint(20) NULL DEFAULT NULL COMMENT '买家id',
   `address_id` bigint(20) NULL DEFAULT NULL COMMENT '地址id',
   `order_status` int(11) NULL DEFAULT NULL COMMENT '订单状态：0进行中，1已完成，2取消交易',
   `pay_status` int(11) NULL DEFAULT NULL COMMENT '支付状态：0未付款，1已付款，2线下付款，3线下付款已收款',
@@ -259,6 +259,8 @@ CREATE TABLE `user_address`  (
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `is_delete` int(11) NULL DEFAULT NULL COMMENT '是否删除：0未删除，1删除',
   `is_default` int(11) NULL DEFAULT 0 COMMENT '是否默认：0非默认，11默认',
+  `receiver_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '收货人',
+  `receiver_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '收货人手机号',
   PRIMARY KEY (`address_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
 
@@ -288,9 +290,9 @@ CREATE TABLE `zpp_menu`  (
 -- ----------------------------
 -- Records of zpp_menu
 -- ----------------------------
-INSERT INTO `zpp_menu` VALUES (1, '1', 0, 1, '', '', 0, '', '', '', 0);
-INSERT INTO `zpp_menu` VALUES (2, '2', 0, 1, '', '', 0, '', '', '', 0);
-INSERT INTO `zpp_menu` VALUES (3, '3', 0, 1, '', '', 0, '', '', '', 0);
+INSERT INTO `zpp_menu` VALUES (1, '系统设置', 0, 1, '/system', 'M', 0, '', '', '', 0);
+INSERT INTO `zpp_menu` VALUES (2, '角色管理', 1, 1, '/system/role', 'C', 0, '', '', '', 0);
+INSERT INTO `zpp_menu` VALUES (3, '菜单管理', 1, 1, '/system/menu', 'C', 0, '', '', '', 0);
 
 -- ----------------------------
 -- Table structure for zpp_role
@@ -309,8 +311,8 @@ CREATE TABLE `zpp_role`  (
 -- ----------------------------
 -- Records of zpp_role
 -- ----------------------------
-INSERT INTO `zpp_role` VALUES (1, 0, '角色1', '2021-03-17 13:50:54', NULL, NULL);
-INSERT INTO `zpp_role` VALUES (2, 0, '2', '2021-03-17 13:52:14', NULL, NULL);
+INSERT INTO `zpp_role` VALUES (1, 0, '角色1', '2021-03-17 13:50:54', NULL, 0);
+INSERT INTO `zpp_role` VALUES (2, 0, '2', '2021-03-17 13:52:14', NULL, 0);
 
 -- ----------------------------
 -- Table structure for zpp_role_menu
@@ -326,8 +328,8 @@ CREATE TABLE `zpp_role_menu`  (
 -- ----------------------------
 -- Records of zpp_role_menu
 -- ----------------------------
-INSERT INTO `zpp_role_menu` VALUES (1, 1, 1);
-INSERT INTO `zpp_role_menu` VALUES (1, 2, 2);
+INSERT INTO `zpp_role_menu` VALUES (2, 1, 1);
+INSERT INTO `zpp_role_menu` VALUES (2, 2, 2);
 
 -- ----------------------------
 -- Table structure for zpp_store
@@ -351,8 +353,8 @@ CREATE TABLE `zpp_store`  (
 -- ----------------------------
 -- Records of zpp_store
 -- ----------------------------
-INSERT INTO `zpp_store` VALUES (1, 'zpp', NULL, NULL, '202CB962AC59075B964B07152D234B70', NULL, NULL, NULL, NULL, 'zpp', NULL);
-INSERT INTO `zpp_store` VALUES (2, 'zpp2', NULL, NULL, '202CB962AC59075B964B07152D234B70', NULL, NULL, NULL, NULL, 'zpp', NULL);
+INSERT INTO `zpp_store` VALUES (1, 'zpp', NULL, NULL, '202CB962AC59075B964B07152D234B70', NULL, NULL, NULL, NULL, 'zpp', 0);
+INSERT INTO `zpp_store` VALUES (2, 'zpp2', NULL, NULL, '202CB962AC59075B964B07152D234B70', NULL, NULL, NULL, NULL, 'zpp', 0);
 
 -- ----------------------------
 -- Table structure for zpp_store_role
